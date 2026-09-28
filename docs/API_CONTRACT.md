@@ -77,6 +77,29 @@
 
 ---
 
+## AI Assistant — `/api/v1/assistant`
+
+### POST /api/v1/assistant/sessions
+- **Auth:** Bearer required.
+- **Body:** `{ title?: string, project_id?: string }`
+- **Response:** `{ data: ChatSession }`
+
+### GET /api/v1/assistant/sessions
+- **Auth:** Bearer required.
+- **Response:** `{ data: ChatSession[] }`
+
+### GET /api/v1/assistant/sessions/:id
+- **Auth:** Bearer required.
+- **Response:** `{ data: { ...ChatSession, messages: ChatMessage[] } }`
+
+### POST /api/v1/assistant/sessions/:id/messages
+- **Auth:** Bearer required.
+- **Body:** `{ content: string, scope?: any }`
+- **Response:** `{ data: ChatMessage, meta: { retrieved_count, confidence, model_info } }`
+- **Details:** Automatically invokes AI service, stores user message and assistant reply, checks citations and grounding.
+
+---
+
 ## Datasets — `/api/v1/datasets`
 
 ### GET /api/v1/datasets

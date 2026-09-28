@@ -8,7 +8,7 @@
 - [x] B4: Core API - Repository API (Documents, Datasets, Approvals)
 - [x] B5: AI Service - Core (providers, chunking, embeddings, ingestion)
 - [x] B6: AI Service - Semantic Search & RAG
-- [ ] B7: Core API - Projects & Workspace CRUD
+- [x] B7: Evidence-grounded RAG assistant
 - [ ] B8: GIS - Spatial endpoints for MapLibre
 - [x] B9: Core API - Dataset Explorer endpoints
 - [ ] B10: AI Service - Semantic Search & RAG

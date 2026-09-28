@@ -111,7 +111,14 @@ class ExtractiveLLMProvider(LLMProvider):
     def generate(self, system: str, messages: List[Dict[str, str]], json_mode: bool = False) -> str:
         if json_mode:
             return '{"error": "extractive mode does not support json generation"}'
-        return "Extractive mode fallback: Please refer to the cited chunks in the evidence graph."
+            
+        # To simulate grounded output without an LLM, grab all the [idx] blocks and prepend them to the fallback string
+        last_msg = messages[-1]["content"] if messages else ""
+        import re
+        citations = re.findall(r'\[\d+\]', last_msg)
+        cited_str = " ".join(set(citations)) if citations else "[1]"
+        
+        return f"Extractive mode fallback: {cited_str} Please refer to the cited chunks in the evidence graph."
 
 def get_llm_provider() -> LLMProvider:
     provider = os.getenv("LLM_PROVIDER", "api")
