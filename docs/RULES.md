@@ -9,7 +9,7 @@
 
 ## Workflow Rules
 - **Commit Message Style:** Conventional commits (e.g., `feat: ...`, `fix: ...`, `docs: ...`).
-- **Branch Strategy:** Create a new branch per prompt (e.g., `b5-ai-core`).
+- **Branch Strategy:** Commit directly on `main`. No per-prompt branches.
 - **Definition of Done:** 
   - Code runs and is verified.
   - Relevant docs are updated.
