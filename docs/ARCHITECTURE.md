@@ -40,3 +40,7 @@
 **Provider Abstraction:**
 - `EMBEDDING_PROVIDER`: Local default uses `BAAI/bge-small-en-v1.5` (384 dim). API option must output 384 dim.
 - `LLM_PROVIDER`: Swappable API provider (Gemini default, can switch to OpenAI/Anthropic via env vars). Fallback to `extractive` (no-LLM) if no key or internet.
+
+**Assumptions (AI Service):**
+- Ingestion assumes `file_path`s in `documents` and `dataset_versions` are accessible (e.g., relative to a shared root volume when dockerized, or the current working directory).
+- Content hashing uses SHA256 of title + abstract + extracted text. Missing files will not crash the ingestion pipeline; it will fall back to abstract-only chunking.

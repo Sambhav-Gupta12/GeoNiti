@@ -6,12 +6,12 @@
 - [x] B2: Core API - Auth & RBAC
 - [x] B3: Core API - Document Repository CRUD & Metadata
 - [x] B4: Core API - Repository API (Documents, Datasets, Approvals)
-- [ ] B5: AI Service - Semantic Search & RAG
+- [x] B5: AI Service - Core (providers, chunking, embeddings, ingestion)
 - [ ] B6: AI Service - PDF Metadata Extraction
 - [ ] B7: Core API - Projects & Workspace CRUD
 - [ ] B8: GIS - Spatial endpoints for MapLibre
 - [x] B9: Core API - Dataset Explorer endpoints
-- [ ] B10: AI Service - Embedding extraction (local + API fallback)
+- [ ] B10: AI Service - Semantic Search & RAG
 - [ ] B11: AI Service - Scenario Sandbox modeling & endpoints
 - [ ] B12: Core API - Dashboards & Aggregations
 - [ ] B13: Core API - Evidence Graph Connections

@@ -10,6 +10,7 @@ import { errorHandler } from './middleware/errorHandler';
 import { pool } from './db';
 import authRoutes from './modules/auth/routes';
 import adminUsersRoutes from './modules/admin/users/routes';
+import adminReindexRoutes from './modules/admin/reindex/routes';
 import documentRoutes from './modules/documents/routes';
 import datasetRoutes from './modules/datasets/routes';
 import repositoryRoutes from './modules/repository/routes';
@@ -32,6 +33,7 @@ app.use(pinoHttp({ logger, genReqId: req => req.id }));
 // ── Routes ──────────────────────────────────────────────────────────────────
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/admin/users', adminUsersRoutes);
+app.use('/api/v1/admin', adminReindexRoutes);
 app.use('/api/v1/documents', documentRoutes);
 app.use('/api/v1/datasets', datasetRoutes);
 app.use('/api/v1/repository', repositoryRoutes);
