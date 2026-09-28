@@ -1,0 +1,44 @@
+{
+  "cited_facts": [
+    {
+      "id": "cf_dilrmp_digitised",
+      "claim": "Approximately 98.5% of rural land records have been digitised under DILRMP.",
+      "source": "Ministry of Rural Development Annual Report 2023-24",
+      "source_url": "https://rural.nic.in/annual-report",
+      "year": 2024,
+      "verify_before_presenting": true
+    },
+    {
+      "id": "cf_svamitva_villages",
+      "claim": "More than 3.29 lakh (329,000) villages have been surveyed under SVAMITVA as of March 2024.",
+      "source": "Ministry of Panchayati Raj communications",
+      "source_url": "https://svamitva.nic.in",
+      "year": 2024,
+      "verify_before_presenting": true
+    },
+    {
+      "id": "cf_svamitva_cards",
+      "claim": "Approximately 2.34 crore (23.4 million) property cards have been issued under SVAMITVA as of March 2024.",
+      "source": "Ministry of Panchayati Raj communications",
+      "source_url": "https://svamitva.nic.in",
+      "year": 2024,
+      "verify_before_presenting": true
+    },
+    {
+      "id": "cf_land_disputes_civil_cases",
+      "claim": "Land disputes account for roughly two-thirds of pending civil cases in Indian courts.",
+      "source": "Estimates cited in NITI Aayog and Ministry of Law reports; exact share varies by court and state.",
+      "source_url": null,
+      "year": 2023,
+      "verify_before_presenting": true
+    },
+    {
+      "id": "cf_ncr_population",
+      "claim": "NCR has a population exceeding 5 crore (50 million) and spans parts of Delhi, Haryana, Uttar Pradesh and Rajasthan.",
+      "source": "Census 2011 projections, NCRPB",
+      "source_url": "https://ncrpb.nic.in",
+      "year": 2021,
+      "verify_before_presenting": true
+    }
+  ]
+}

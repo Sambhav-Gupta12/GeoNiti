@@ -3,7 +3,7 @@
 ## Backend Tasks
 - [x] B0: Initial setup (DB schema, migrations, monorepo scaffolding)
 - [x] B1: Setup PostgreSQL with PostGIS, pgvector, pg_trgm and seed DB_SCHEMA.md
-- [ ] B2: Core API - Auth & RBAC
+- [x] B2: Core API - Auth & RBAC
 - [ ] B3: Core API - Document Repository CRUD & Metadata
 - [ ] B4: AI Service - Embedding extraction (local + API fallback)
 - [ ] B5: AI Service - Semantic Search & RAG
