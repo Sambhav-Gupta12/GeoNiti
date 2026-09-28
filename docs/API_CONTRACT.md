@@ -19,6 +19,53 @@
 
 ---
 
+## GIS & Regions — `/api/v1/regions`
+
+### GET /api/v1/regions
+- **Auth:** Optional.
+- **Query:** `?level=country|state|district&parent=UUID`
+- **Response:** `{ data: Region[] }`
+- **Details:** Includes `bbox` and `centroid`.
+
+### GET /api/v1/regions/geojson
+- **Auth:** Optional.
+- **Query:** `?level=country|state|district&parent=UUID&indicator=string&year=number`
+- **Response:** `FeatureCollection`
+- **Details:** Returns simplified geometry. Features contain `properties: { id: string, name: string, value?: number }`. Gzipped by Express for performance.
+
+### GET /api/v1/regions/:id/summary
+- **Auth:** Optional.
+- **Response:** `{ data: { region, indicators, documents, neighbours, data_notes } }`
+
+### GET /api/v1/regions/at
+- **Auth:** Optional.
+- **Query:** `?lat=number&lng=number`
+- **Response:** `{ data: Region[] }`
+
+### GET /api/v1/regions/:id/neighbours
+- **Auth:** Optional.
+- **Response:** `{ data: Region[] }`
+
+### GET /api/v1/regions/compare
+- **Auth:** Optional.
+- **Query:** `?ids=UUID,UUID&indicator=string`
+- **Response:** `{ data: { id, name, series: {year, value}[] }[] }`
+
+---
+
+## GIS Layers — `/api/v1/layers`
+
+### GET /api/v1/layers
+- **Auth:** Optional.
+- **Response:** `{ data: Layer[] }`
+
+### GET /api/v1/layers/:key/data
+- **Auth:** Optional.
+- **Query:** `?year=number`
+- **Response:** `{ data: { id, name, value }[] }`
+
+---
+
 ## Repository & Documents — `/api/v1/documents`
 
 ### GET /api/v1/search

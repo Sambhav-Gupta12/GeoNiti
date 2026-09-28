@@ -17,6 +17,8 @@ import documentRoutes from './modules/documents/routes';
 import datasetRoutes from './modules/datasets/routes';
 import repositoryRoutes from './modules/repository/routes';
 import recommendationsRoutes from './modules/recommendations/routes';
+import regionsRoutes from './modules/regions/routes';
+import layersRoutes from './modules/layers/routes';
 
 const logger = pino();
 const app = express();
@@ -43,6 +45,8 @@ app.use('/api/v1/documents', documentRoutes);
 app.use('/api/v1/datasets', datasetRoutes);
 app.use('/api/v1/repository', repositoryRoutes);
 app.use('/api/v1/recommendations', recommendationsRoutes);
+app.use('/api/v1/regions', regionsRoutes);
+app.use('/api/v1/layers', layersRoutes);
 
 // Health check with live DB ping
 app.get('/api/v1/health', async (_req, res) => {
