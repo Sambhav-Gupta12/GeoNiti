@@ -9,7 +9,7 @@
 - [x] B5: AI Service - Core (providers, chunking, embeddings, ingestion)
 - [x] B6: AI Service - Semantic Search & RAG
 - [x] B7: Evidence-grounded RAG assistant
-- [ ] B8: GIS - Spatial endpoints for MapLibre
+- [x] B8: Metadata extraction and recommendations
 - [x] B9: Core API - Dataset Explorer endpoints
 - [ ] B10: AI Service - Semantic Search & RAG
 - [ ] B11: AI Service - Scenario Sandbox modeling & endpoints

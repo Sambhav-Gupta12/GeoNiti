@@ -53,6 +53,13 @@
 - **Auth:** Optional.
 - **Response:** Streams the file.
 
+### POST /api/v1/documents/extract-preview
+- **Auth:** Bearer + `document:create`
+- **Content-Type:** `multipart/form-data`
+- **Body:** `{ file: File }`
+- **Response:** `{ data: ExtractedMetadata }`
+- **Details:** Extracts metadata from the uploaded file text and returns it without saving the document.
+
 ### POST /api/v1/documents
 - **Auth:** Bearer + `document:create`
 - **Content-Type:** `multipart/form-data`
@@ -153,6 +160,16 @@
 ### GET /api/v1/repository/summary
 - **Auth:** Optional.
 - **Response:** `{ data: { documents: { type, status, visibility, cnt }[], datasets: { status, visibility, cnt }[] } }`
+
+---
+
+## Recommendations — `/api/v1/recommendations`
+
+### GET /api/v1/recommendations
+- **Auth:** Optional. Applied filtering based on caller role.
+- **Query:** `?entity_type=document|dataset|region&entity_id=UUID&limit=5`
+- **Response:** `{ data: Recommendation[] }`
+- **Details:** Returns related entities leveraging embedding distances and shared properties (topics, category, region).
 
 ---
 

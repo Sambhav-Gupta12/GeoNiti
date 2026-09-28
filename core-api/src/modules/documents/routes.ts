@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import { authenticate } from '../../middleware/authenticate';
 import { requirePermission } from '../../middleware/requirePermission';
-import { getDocs, getDoc, getDocFile, createDoc, updateDoc, approveDoc, rejectDoc } from './controller';
+import { getDocs, getDoc, getDocFile, createDoc, updateDoc, approveDoc, rejectDoc, extractPreview } from './controller';
 
 const uploadDir = path.resolve(__dirname, '../../../../uploads/documents');
 if (!fs.existsSync(uploadDir)) {
@@ -31,6 +31,7 @@ router.get('/:id', getDoc);
 router.get('/:id/file', getDocFile);
 
 // Create / Update
+router.post('/extract-preview', requirePermission('document:create'), upload.single('file'), extractPreview);
 router.post('/', requirePermission('document:create'), upload.single('file'), createDoc);
 router.patch('/:id', requirePermission('document:create'), updateDoc);
 

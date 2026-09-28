@@ -51,10 +51,63 @@ export async function createDoc(req: Request, res: Response, next: NextFunction)
     const data = uploadDocumentSchema.parse(req.body);
     const filePath = req.file ? req.file.path : null;
     
+    // We create the doc with pending_review
     const doc = await createDocument(data, filePath);
+    
+    // Wire into extraction
+    if (filePath) {
+      try {
+        const aiServiceUrl = config.AI_SERVICE_URL.replace(/\/$/, '');
+        const aiRes = await fetch(`${aiServiceUrl}/extract/metadata`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${config.AI_SERVICE_KEY}` },
+          body: JSON.stringify({ file_path: `/app/uploads/documents/${path.basename(filePath)}` })
+        });
+        
+        if (aiRes.ok) {
+          const aiData = await aiRes.json();
+          await import('../../db').then(({pool}) => 
+            pool.query(`UPDATE documents SET extracted_metadata = $1 WHERE id = $2`, [JSON.stringify(aiData.data), doc.id])
+          );
+        }
+      } catch (err) {
+        console.error('Failed to extract metadata after upload:', err);
+      }
+    }
+
     void writeAuditEvent(req.user, 'document.create', 'document', doc.id, { type: doc.type }, req.ip);
     
     res.json({ data: doc, meta: null, error: null });
+  } catch (err) { next(err); }
+}
+
+export async function extractPreview(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const filePath = req.file ? req.file.path : null;
+    if (!filePath) {
+      throw new ApiError(400, 'BAD_REQUEST', 'File is required for extraction preview');
+    }
+
+    const aiServiceUrl = config.AI_SERVICE_URL.replace(/\/$/, '');
+    // AI service and Core API share volumes. The path inside ai-service is /app/uploads/...
+    const containerFilePath = `/app/uploads/documents/${path.basename(filePath)}`;
+    
+    const aiRes = await fetch(`${aiServiceUrl}/extract/metadata`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${config.AI_SERVICE_KEY}`
+      },
+      body: JSON.stringify({ file_path: containerFilePath })
+    });
+
+    if (!aiRes.ok) {
+      throw new ApiError(aiRes.status, 'AI_SERVICE_ERROR', await aiRes.text());
+    }
+
+    const aiData = await aiRes.json();
+
+    res.json({ data: aiData.data, meta: null, error: null });
   } catch (err) { next(err); }
 }
 
