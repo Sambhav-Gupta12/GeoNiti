@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+
   postgres:
     build:
       context: ./db
@@ -28,6 +29,9 @@ services:
       - .env
     environment:
       - DATABASE_URL=postgres://${POSTGRES_USER:-bhuniti}:${POSTGRES_PASSWORD:-bhuniti_pass}@postgres:5432/${POSTGRES_DB:-bhuniti_db}
+    volumes:
+      - ./db/migrations:/app/db/migrations
+      - ./db/seeds:/app/db/seeds
     depends_on:
       postgres:
         condition: service_healthy
@@ -37,6 +41,8 @@ services:
       context: ./ai-service
     ports:
       - "8000:8000"
+    volumes:
+      - ./ai-service:/app
     env_file:
       - .env
     environment:

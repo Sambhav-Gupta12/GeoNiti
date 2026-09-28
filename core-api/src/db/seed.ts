@@ -33,7 +33,7 @@ async function printCounts(client: PoolClient) {
 async function main() {
   const client = await pool.connect();
   try {
-    const seedDir = path.resolve(__dirname, '../../../db/seeds');
+    const seedDir = path.resolve(__dirname, '../../db/seeds');
     const files = [
       '01_organizations',
       '02_users',

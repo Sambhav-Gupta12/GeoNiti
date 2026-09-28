@@ -7,7 +7,7 @@
 - [x] B3: Core API - Document Repository CRUD & Metadata
 - [x] B4: Core API - Repository API (Documents, Datasets, Approvals)
 - [x] B5: AI Service - Core (providers, chunking, embeddings, ingestion)
-- [ ] B6: AI Service - PDF Metadata Extraction
+- [x] B6: AI Service - Semantic Search & RAG
 - [ ] B7: Core API - Projects & Workspace CRUD
 - [ ] B8: GIS - Spatial endpoints for MapLibre
 - [x] B9: Core API - Dataset Explorer endpoints

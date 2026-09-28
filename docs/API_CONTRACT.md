@@ -21,6 +21,25 @@
 
 ## Repository & Documents — `/api/v1/documents`
 
+### GET /api/v1/search
+- **Auth:** Optional. Determines `allowed_visibility` based on role.
+- **Query:** `?q=query&mode=hybrid|semantic|keyword&limit=20&types=...&topics=...&region_ids=...`
+- **Response:** `{ data: { results: [...], facets: {...}, query_understanding: {...} } }`
+- **Details:** Calls `ai-service` POST `/search` internally.
+
+### GET /api/v1/search/saved-searches
+- **Auth:** Bearer required.
+- **Response:** `{ data: SavedSearch[] }`
+
+### POST /api/v1/search/saved-searches
+- **Auth:** Bearer required.
+- **Body:** `{ name, query, filters }`
+- **Response:** `{ data: SavedSearch }`
+
+### DELETE /api/v1/search/saved-searches/:id
+- **Auth:** Bearer required.
+- **Response:** `{ data: { id } }`
+
 ### GET /api/v1/documents
 - **Auth:** Optional. Filters applied based on user role visibilities.
 - **Query:** `?page=1&pageSize=20&sort=created_at&order=desc&type=&topic=&region=&year_from=&year_to=&organization=&keyword=&status=&query=`
