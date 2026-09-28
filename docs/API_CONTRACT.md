@@ -220,6 +220,54 @@
 
 ---
 
+## Analytics — `/api/v1/analytics`
+
+### GET /api/v1/analytics/trend
+- **Auth:** Bearer required.
+- **Query:** `?indicator=string&regions=uuid,uuid&year_from=2010&year_to=2020`
+- **Response:** `{ data: { [region_name]: { series: [], cagr_percent, linear_slope, descriptor } } }`
+
+### GET /api/v1/analytics/compare
+- **Auth:** Bearer required.
+- **Query:** `?indicators=string,string&regions=uuid,uuid&year=2023`
+- **Response:** `{ data: { region_id, region_name, indicator, value }[] }`
+
+### GET /api/v1/analytics/ranking
+- **Auth:** Bearer required.
+- **Query:** `?indicator=string&year=2020&level=district`
+- **Response:** `{ data: { id, name, level, value }[] }`
+
+### GET /api/v1/analytics/correlation
+- **Auth:** Bearer required.
+- **Query:** `?x=string&y=string`
+- **Response:** `{ data: { pearson_r, p_value, n_samples, caution } }`
+
+### GET /api/v1/analytics/anomalies
+- **Auth:** Bearer required.
+- **Query:** `?indicator=string&regions=uuid,uuid`
+- **Response:** `{ data: { anomalies: {region, year, value, yoy_change, score, reason}[], method: string } }`
+
+### POST /api/v1/analytics/ask
+- **Auth:** Bearer required.
+- **Body:** `{ question: string }`
+- **Response:** `{ data: { interpreted_plan, result, chart_hint, notes } }`
+
+### GET /api/v1/analytics/dashboard
+- **Auth:** Bearer required.
+- **Query:** `?role=string`
+- **Response:** `{ data: { role, kpi: {label, value}[], recent_research: any[] } }`
+
+### POST /api/v1/analytics/analyses
+- **Auth:** Bearer required.
+- **Body:** `{ type, project_id, params, result }`
+- **Response:** `{ data: Analysis }`
+
+### GET /api/v1/analytics/analyses
+- **Auth:** Bearer required.
+- **Response:** `{ data: Analysis[] }`
+
+---
+
 ## Health
 
 ### GET /api/v1/health

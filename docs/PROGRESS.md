@@ -11,7 +11,7 @@
 - [x] B7: Evidence-grounded RAG assistant
 - [x] B8: Metadata extraction and recommendations
 - [x] B9: Core API - GIS Spatial Endpoints
-- [ ] B10: Core API - Dataset Explorer endpoints
+- [x] B10: Core API & AI Service - Analytics API
 - [ ] B11: AI Service - Scenario Sandbox modeling & endpoints
 - [ ] B12: Core API - Dashboards & Aggregations
 - [ ] B13: Core API - Evidence Graph Connections
