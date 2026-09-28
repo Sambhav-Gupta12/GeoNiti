@@ -22,43 +22,43 @@ CALLER_CONTEXT = {
 QUERIES = [
     {
         "q": "urban sprawl eating farmland", 
-        "expected": "Delhi-NCR Land-Use / Land-Cover Time Series 2005-2024",
+        "expected": "Peri-urbanisation and Farmland Conversion in Delhi-NCR: A Two-Decade Trajectory",
         "semantic_expected": True
     },
     {
         "q": "groundwater depletion before monsoon", 
-        "expected": "NCR Groundwater Depth Annual Observations 2005-2024",
+        "expected": "Groundwater Depletion and Land Governance in the NCR: Linkages and Policy Gaps",
         "semantic_expected": True
     },
     {
         "q": "road density infrastructure", 
-        "expected": "NCR Road Density Estimates 2005-2024",
+        "expected": "Road Infrastructure as the Primary Driver of Peri-Urban Conversion in NCR",
         "semantic_expected": False
     },
     {
         "q": "climate vulnerability flood heat", 
-        "expected": "NCR Climate Vulnerability Index 2005-2024",
+        "expected": "Climate-Resilient Land Use Planning: Baghpat District Groundwater Stress Response",
         "semantic_expected": False
     },
     {
         "q": "agricultural census size distribution", 
-        "expected": "NCR Agricultural Census Land Holding Summary",
+        "expected": "Digital India Land Records Modernisation Programme",
         "semantic_expected": False
     },
     {
         "q": "property valuation trends", 
-        "expected": "NCR Land Price Index 2005-2024",
+        "expected": "NCR Land Governance Annual Review 2023",
         "semantic_expected": True
     },
     {
         "q": "litigation and conflicts over land", 
-        "expected": "NCR Land Dispute Court Cases Dataset", # Wait, this one is restricted. Public won't see it.
+        "expected": "Land Dispute Resolution in Peri-urban India",
         "semantic_expected": True,
         "restricted": True
     },
     {
         "q": "delhi ncr land use", 
-        "expected": "Delhi-NCR Land-Use / Land-Cover Time Series 2005-2024",
+        "expected": "Peri-urbanisation and Farmland Conversion in Delhi-NCR",
         "semantic_expected": False
     }
 ]
