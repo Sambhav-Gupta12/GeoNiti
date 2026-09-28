@@ -5,13 +5,13 @@
 - [x] B1: Setup PostgreSQL with PostGIS, pgvector, pg_trgm and seed DB_SCHEMA.md
 - [x] B2: Core API - Auth & RBAC
 - [x] B3: Core API - Document Repository CRUD & Metadata
-- [ ] B4: AI Service - Embedding extraction (local + API fallback)
+- [x] B4: Core API - Repository API (Documents, Datasets, Approvals)
 - [ ] B5: AI Service - Semantic Search & RAG
 - [ ] B6: AI Service - PDF Metadata Extraction
 - [ ] B7: Core API - Projects & Workspace CRUD
 - [ ] B8: GIS - Spatial endpoints for MapLibre
-- [ ] B9: Core API - Dataset Explorer endpoints
-- [ ] B10: AI Service - Trend Analytics & Natural Language Ops
+- [x] B9: Core API - Dataset Explorer endpoints
+- [ ] B10: AI Service - Embedding extraction (local + API fallback)
 - [ ] B11: AI Service - Scenario Sandbox modeling & endpoints
 - [ ] B12: Core API - Dashboards & Aggregations
 - [ ] B13: Core API - Evidence Graph Connections

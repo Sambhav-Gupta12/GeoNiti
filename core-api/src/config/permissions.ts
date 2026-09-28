@@ -90,3 +90,13 @@ export function getAllowedVisibilities(role: string): Visibility[] {
       return ['public'];
   }
 }
+
+export function getAllowedStatuses(role: string): string[] {
+  switch (role as Role) {
+    case 'data_admin':
+    case 'system_admin':
+      return ['draft', 'pending_review', 'approved', 'rejected'];
+    default:
+      return ['approved'];
+  }
+}

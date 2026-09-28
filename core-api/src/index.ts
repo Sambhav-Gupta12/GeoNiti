@@ -10,6 +10,9 @@ import { errorHandler } from './middleware/errorHandler';
 import { pool } from './db';
 import authRoutes from './modules/auth/routes';
 import adminUsersRoutes from './modules/admin/users/routes';
+import documentRoutes from './modules/documents/routes';
+import datasetRoutes from './modules/datasets/routes';
+import repositoryRoutes from './modules/repository/routes';
 
 const logger = pino();
 const app = express();
@@ -29,6 +32,9 @@ app.use(pinoHttp({ logger, genReqId: req => req.id }));
 // ── Routes ──────────────────────────────────────────────────────────────────
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/admin/users', adminUsersRoutes);
+app.use('/api/v1/documents', documentRoutes);
+app.use('/api/v1/datasets', datasetRoutes);
+app.use('/api/v1/repository', repositoryRoutes);
 
 // Health check with live DB ping
 app.get('/api/v1/health', async (_req, res) => {
@@ -45,8 +51,10 @@ app.get('/api/v1/health', async (_req, res) => {
 app.use(errorHandler);
 
 const PORT = parseInt(config.PORT, 10);
-app.listen(PORT, '0.0.0.0', () => {
-  logger.info(`Core API listening on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, '0.0.0.0', () => {
+    logger.info(`Core API listening on port ${PORT}`);
+  });
+}
 
 export default app; // exported for testing
