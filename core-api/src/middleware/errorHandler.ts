@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-export const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
+export const errorHandler = (err: any, req: Request, res: Response, _next: NextFunction) => {
   const code = err.code || 'INTERNAL_ERROR';
   const message = err.message || 'An unexpected error occurred';
   const details = err.details || {};
