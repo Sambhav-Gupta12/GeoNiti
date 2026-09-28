@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  postgres:
+    build:
+      context: ./db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-bhuniti}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bhuniti_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-bhuniti_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-bhuniti} -d ${POSTGRES_DB:-bhuniti_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  core-api:
+    build:
+      context: ./core-api
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgres://${POSTGRES_USER:-bhuniti}:${POSTGRES_PASSWORD:-bhuniti_pass}@postgres:5432/${POSTGRES_DB:-bhuniti_db}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  ai-service:
+    build:
+      context: ./ai-service
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-bhuniti}:${POSTGRES_PASSWORD:-bhuniti_pass}@postgres:5432/${POSTGRES_DB:-bhuniti_db}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:

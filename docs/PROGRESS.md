@@ -1,7 +1,7 @@
 # Progress Tracker
 
 ## Backend Tasks
-- [ ] B0: Initial setup (DB schema, migrations, monorepo scaffolding)
+- [x] B0: Initial setup (DB schema, migrations, monorepo scaffolding)
 - [ ] B1: Setup PostgreSQL with PostGIS, pgvector, pg_trgm and seed DB_SCHEMA.md
 - [ ] B2: Core API - Auth & RBAC
 - [ ] B3: Core API - Document Repository CRUD & Metadata
