@@ -13,6 +13,7 @@ const Placeholder = lazy(() => import('@/pages/Placeholder'));
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const Repository = lazy(() => import('@/pages/Repository'));
 const DocumentDetail = lazy(() => import('@/pages/DocumentDetail'));
+const Search = lazy(() => import('@/pages/Search'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,7 +46,7 @@ export default function App() {
               
               <Route path="/" element={<AppShell />}>
                 <Route index element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-                <Route path="search" element={<ProtectedRoute><Placeholder title="AI Search" description="Semantic search across all documents." /></ProtectedRoute>} />
+                <Route path="search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
                 <Route path="repository" element={<ProtectedRoute><Repository /></ProtectedRoute>} />
                 <Route path="repository/:id" element={<ProtectedRoute><DocumentDetail /></ProtectedRoute>} />
                 <Route path="datasets" element={<ProtectedRoute><Placeholder title="Datasets" description="Explore underlying tabular and vector datasets." /></ProtectedRoute>} />
