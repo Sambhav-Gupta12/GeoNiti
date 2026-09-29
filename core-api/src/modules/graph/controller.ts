@@ -28,8 +28,8 @@ export async function getGraph(req: Request, res: Response, next: NextFunction):
     
     for (const link of linksRes.rows) {
       edgesList.push({ source: link.source_id, target: link.target_id, relation: link.relation });
-      nodesMap.set(link.source_id, { id: link.source_id, type: link.source_type, label: \`\${link.source_type}_\${link.source_id.substring(0,6)}\` });
-      nodesMap.set(link.target_id, { id: link.target_id, type: link.target_type, label: \`\${link.target_type}_\${link.target_id.substring(0,6)}\` });
+      nodesMap.set(link.source_id, { id: link.source_id, type: link.source_type, label: `${link.source_type}_${link.source_id.substring(0,6)}` });
+      nodesMap.set(link.target_id, { id: link.target_id, type: link.target_type, label: `${link.target_type}_${link.target_id.substring(0,6)}` });
     }
     
     // If document, check regions
@@ -43,7 +43,7 @@ export async function getGraph(req: Request, res: Response, next: NextFunction):
       
       for (const dr of docRegs.rows) {
         edgesList.push({ source: center_id, target: dr.region_id, relation: 'covers_region' });
-        nodesMap.set(center_id, { id: center_id, type: 'document', label: \`document_\${(center_id as string).substring(0,6)}\` });
+        nodesMap.set(center_id, { id: center_id, type: 'document', label: `document_${(center_id as string).substring(0,6)}` });
         nodesMap.set(dr.region_id, { id: dr.region_id, type: 'region', label: dr.name });
       }
     }
@@ -70,7 +70,7 @@ export async function getGraph(req: Request, res: Response, next: NextFunction):
     
     // Ensure center is in nodes even if isolated
     if (!nodesMap.has(center_id)) {
-      nodesMap.set(center_id, { id: center_id, type: center_type, label: \`\${center_type} (Center)\` });
+      nodesMap.set(center_id, { id: center_id, type: center_type, label: `${center_type} (Center)` });
     }
     
     res.json({

@@ -22,11 +22,11 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 const DEMO_ACCOUNTS = [
-  { label: 'System Administrator', email: 'admin@example.com', pass: 'password123', role: 'admin' },
-  { label: 'Policy Analyst', email: 'analyst@example.com', pass: 'password123', role: 'policy_analyst' },
-  { label: 'Data Administrator', email: 'data_admin@example.com', pass: 'password123', role: 'data_administrator' },
-  { label: 'Researcher', email: 'researcher@example.com', pass: 'password123', role: 'researcher' },
-  { label: 'Government Official', email: 'official@example.com', pass: 'password123', role: 'official' },
+  { label: 'System Administrator', email: 'sysadmin@bhuniti.demo', pass: 'Demo@1234', role: 'system_admin' },
+  { label: 'Policy Analyst', email: 'analyst@bhuniti.demo', pass: 'Demo@1234', role: 'policy_analyst' },
+  { label: 'Data Administrator', email: 'dataadmin@bhuniti.demo', pass: 'Demo@1234', role: 'data_admin' },
+  { label: 'Researcher', email: 'researcher@bhuniti.demo', pass: 'Demo@1234', role: 'researcher' },
+  { label: 'Government Official', email: 'official@bhuniti.demo', pass: 'Demo@1234', role: 'govt_official' },
 ];
 
 export default function Login() {
@@ -57,7 +57,7 @@ export default function Login() {
   const fillDemo = (email: string, pass: string) => {
     setValue('email', email);
     setValue('password', pass);
-    handleSubmit(onSubmit)();
+    onSubmit({ email, password });
   };
 
   const handleGuest = () => {

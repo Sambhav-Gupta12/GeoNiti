@@ -23,8 +23,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const u = await api.get<User>('/auth/me');
       setUser(u);
-      const perms = await api.get<Permission[]>('/auth/permissions');
-      setPermissions(perms);
+      const res = await api.get<{role: string, permissions: Permission[]}>('/auth/permissions');
+      setPermissions(res.permissions || []);
     } catch (e) {
       api.clearToken();
       setUser(null);
@@ -53,8 +53,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (token: string, userData: User) => {
     api.setToken(token);
     setUser(userData);
-    const perms = await api.get<Permission[]>('/auth/permissions');
-    setPermissions(perms);
+    const res = await api.get<{role: string, permissions: Permission[]}>('/auth/permissions');
+    setPermissions(res.permissions || []);
   };
 
   const logout = () => {

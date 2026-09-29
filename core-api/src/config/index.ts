@@ -13,7 +13,7 @@ const envSchema = z.object({
   AI_SERVICE_KEY: z.string(),
   FRONTEND_URL: z.string().default('http://localhost:5173'),
   RATE_LIMIT_WINDOW_MS: z.string().default('900000'),
-  RATE_LIMIT_MAX: z.string().default('5'),
+  RATE_LIMIT_MAX: z.string().default('500'),
 });
 
 const _env = envSchema.safeParse(process.env);

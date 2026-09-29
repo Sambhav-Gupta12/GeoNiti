@@ -70,7 +70,7 @@ export async function bulkApprove(req: Request, res: Response, next: NextFunctio
     }
     
     // Trigger ingestion asynchronously
-    triggerIngestion('all', req.token as string).catch(console.error);
+    triggerIngestion('all', req.headers.authorization?.replace('Bearer ', '') || '').catch(console.error);
     
     res.json({ data: { success: true, count: items.length }, meta: null, error: null });
   } catch (err) { next(err); }

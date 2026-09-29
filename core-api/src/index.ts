@@ -37,7 +37,7 @@ app.use(helmet());
 app.use(cors({ origin: config.FRONTEND_URL || '*', credentials: true }));
 
 const generalLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 1000, standardHeaders: true, legacyHeaders: false });
-const strictLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 50, standardHeaders: true, legacyHeaders: false });
+const strictLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 200, standardHeaders: true, legacyHeaders: false });
 app.use(generalLimiter);
 
 app.use(express.json({ limit: '5mb' }));

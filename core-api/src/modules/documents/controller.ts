@@ -6,6 +6,7 @@ import { writeAuditEvent } from '../../services/audit';
 import path from 'path';
 import fs from 'fs';
 import { ApiError } from '../../types';
+import { config } from '../../config';
 
 export async function getDocs(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
