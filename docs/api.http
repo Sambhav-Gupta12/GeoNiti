@@ -1,0 +1,61 @@
+@baseUrl = http://localhost:3000/api/v1
+@token = {{login.response.body.data.access_token}}
+
+### Public Overview
+GET {{baseUrl}}/public/overview
+
+### Login as Data Admin
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "password123"
+}
+
+### Current User Profile
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{token}}
+
+### Admin: Get Approval Queue
+GET {{baseUrl}}/admin/queue
+Authorization: Bearer {{token}}
+
+### Admin: View System Health
+GET {{baseUrl}}/admin/system-health
+Authorization: Bearer {{token}}
+
+### Repository: List Documents
+GET {{baseUrl}}/documents
+Authorization: Bearer {{token}}
+
+### AI Search: Semantic Hybrid Search
+POST {{baseUrl}}/search
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "query": "Land use policies in district A",
+  "limit": 5
+}
+
+### Analytics: Trend
+GET {{baseUrl}}/analytics/trend?indicator=cropland_pct&regions=1
+Authorization: Bearer {{token}}
+
+### Scenario: Get Parameters
+GET {{baseUrl}}/scenarios/parameters
+Authorization: Bearer {{token}}
+
+### GIS: Get Regions
+GET {{baseUrl}}/regions?level=district
+Authorization: Bearer {{token}}
+
+### Workspace: List Projects
+GET {{baseUrl}}/projects
+Authorization: Bearer {{token}}
+
+### Innovation Portal: List Challenges
+GET {{baseUrl}}/challenges
+Authorization: Bearer {{token}}

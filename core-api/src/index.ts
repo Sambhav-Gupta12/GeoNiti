@@ -2,6 +2,7 @@ import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import rateLimit from 'express-rate-limit';
 import { randomUUID } from 'crypto';
 import pinoHttp from 'pino-http';
 import pino from 'pino';
@@ -33,8 +34,13 @@ const logger = pino();
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: config.FRONTEND_URL, credentials: true }));
-app.use(express.json());
+app.use(cors({ origin: config.FRONTEND_URL || '*', credentials: true }));
+
+const generalLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 1000, standardHeaders: true, legacyHeaders: false });
+const strictLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 50, standardHeaders: true, legacyHeaders: false });
+app.use(generalLimiter);
+
+app.use(express.json({ limit: '5mb' }));
 app.use(cookieParser());
 
 // Request ID & Logger
@@ -45,6 +51,9 @@ app.use((req, _res, next) => {
 app.use(pinoHttp({ logger, genReqId: req => req.id }));
 
 // ── Routes ──────────────────────────────────────────────────────────────────
+app.use('/api/v1/auth/login', strictLimiter);
+app.use('/api/v1/auth/refresh', strictLimiter);
+
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/admin/users', adminUsersRoutes);
 app.use('/api/v1/admin', adminReindexRoutes);
