@@ -17,6 +17,8 @@ const Search = lazy(() => import('@/pages/Search'));
 const Assistant = lazy(() => import('@/pages/Assistant'));
 const MapExplorer = lazy(() => import('@/pages/MapExplorer'));
 const RegionProfile = lazy(() => import('@/pages/RegionProfile'));
+const Datasets = lazy(() => import('@/pages/Datasets'));
+const DatasetDetail = lazy(() => import('@/pages/DatasetDetail'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -52,8 +54,8 @@ export default function App() {
                 <Route path="search" element={<ProtectedRoute><Search /></ProtectedRoute>} />
                 <Route path="repository" element={<ProtectedRoute><Repository /></ProtectedRoute>} />
                 <Route path="repository/:id" element={<ProtectedRoute><DocumentDetail /></ProtectedRoute>} />
-                <Route path="datasets" element={<ProtectedRoute><Placeholder title="Datasets" description="Explore underlying tabular and vector datasets." /></ProtectedRoute>} />
-                <Route path="datasets/:id" element={<ProtectedRoute><Placeholder title="Dataset Details" /></ProtectedRoute>} />
+                <Route path="datasets" element={<ProtectedRoute><Datasets /></ProtectedRoute>} />
+                <Route path="datasets/:id" element={<ProtectedRoute><DatasetDetail /></ProtectedRoute>} />
                 <Route path="assistant" element={<ProtectedRoute><Assistant /></ProtectedRoute>} />
                 <Route path="map" element={<ProtectedRoute><MapExplorer /></ProtectedRoute>} />
                 <Route path="regions/:id" element={<ProtectedRoute><RegionProfile /></ProtectedRoute>} />
