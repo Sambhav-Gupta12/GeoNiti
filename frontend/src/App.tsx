@@ -23,6 +23,7 @@ const Analytics = lazy(() => import('@/pages/Analytics'));
 const Scenarios = lazy(() => import('@/pages/Scenarios'));
 const Workspace = lazy(() => import('@/pages/Workspace'));
 const ProjectDetail = lazy(() => import('@/pages/ProjectDetail'));
+const Innovation = lazy(() => import('@/pages/Innovation'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -68,7 +69,7 @@ export default function App() {
                 <Route path="workspace" element={<ProtectedRoute><Workspace /></ProtectedRoute>} />
                 <Route path="workspace/:id" element={<ProtectedRoute><ProjectDetail /></ProtectedRoute>} />
                 
-                <Route path="innovation" element={<ProtectedRoute><Placeholder title="Innovation Portal" description="Discover and register for challenges." /></ProtectedRoute>} />
+                <Route path="innovation" element={<ProtectedRoute><Innovation /></ProtectedRoute>} />
                 
                 <Route path="admin/queue" element={<ProtectedRoute permission="document:approve"><Placeholder title="Approval Queue" description="Review uploaded documents and metadata." /></ProtectedRoute>} />
                 <Route path="admin/users" element={<ProtectedRoute permission="admin:users"><Placeholder title="Users & Roles" /></ProtectedRoute>} />
