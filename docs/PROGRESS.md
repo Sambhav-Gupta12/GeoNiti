@@ -26,7 +26,7 @@
 - [x] F5: Dataset Explorer UI
 - [x] F6: Workspace & Projects UI
 - [x] F7: Policy Analytics & Trend Charts
-- [ ] F8: Scenario Sandbox Interface
+- [x] F8: Scenario Sandbox Interface
 - [ ] F9: Dashboards (Role-specific views)
 - [ ] F10: Evidence Graph View
 - [ ] F11: Admin & Approvals UI
