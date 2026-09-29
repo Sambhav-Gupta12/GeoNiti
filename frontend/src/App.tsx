@@ -19,6 +19,7 @@ const MapExplorer = lazy(() => import('@/pages/MapExplorer'));
 const RegionProfile = lazy(() => import('@/pages/RegionProfile'));
 const Datasets = lazy(() => import('@/pages/Datasets'));
 const DatasetDetail = lazy(() => import('@/pages/DatasetDetail'));
+const Analytics = lazy(() => import('@/pages/Analytics'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -59,7 +60,7 @@ export default function App() {
                 <Route path="assistant" element={<ProtectedRoute><Assistant /></ProtectedRoute>} />
                 <Route path="map" element={<ProtectedRoute><MapExplorer /></ProtectedRoute>} />
                 <Route path="regions/:id" element={<ProtectedRoute><RegionProfile /></ProtectedRoute>} />
-                <Route path="analytics" element={<ProtectedRoute><Placeholder title="Analytics" description="Indicator trends and comparisons." /></ProtectedRoute>} />
+                <Route path="analytics" element={<ProtectedRoute><Analytics /></ProtectedRoute>} />
                 
                 <Route path="scenarios" element={<ProtectedRoute permission="scenario:run"><Placeholder title="Scenario Sandbox" description="Model policy impacts." /></ProtectedRoute>} />
                 

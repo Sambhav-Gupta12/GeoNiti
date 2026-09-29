@@ -28,7 +28,7 @@
 - [x] F7: Policy Analytics & Trend Charts
 - [x] F8: Scenario Sandbox Interface
 - [x] F9: Dashboards (Role-specific views)
-- [ ] F10: Evidence Graph View
+- [x] F10: Evidence Graph View
 - [ ] F11: Admin & Approvals UI
 - [ ] F12: Innovation Portal Views
 - [ ] F13: PDF Upload & Metadata Review
