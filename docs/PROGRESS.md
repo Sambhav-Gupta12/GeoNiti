@@ -15,7 +15,7 @@
 - [x] B11: AI Service - Scenario Sandbox modeling & endpoints
 - [x] B12: Core API - Dashboards & Aggregations
 - [x] B13: Core API - Evidence Graph Connections
-- [ ] B14: Core API - Innovation Portal (Admin/CRUD)
+- [x] B14: Core API - Innovation Portal (Admin/CRUD)
 
 ## Frontend Tasks
 - [ ] F0: Frontend setup, Design System & COMPONENTS.md

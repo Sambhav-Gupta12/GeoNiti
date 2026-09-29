@@ -25,6 +25,9 @@ import projectsRoutes from './modules/projects/routes';
 import annotationsRoutes from './modules/annotations/routes';
 import graphRoutes from './modules/graph/routes';
 import notificationsRoutes from './modules/notifications/routes';
+import challengesRoutes from './modules/challenges/routes';
+import adminRoutes from './modules/admin/routes';
+import publicRoutes from './modules/public/routes';
 
 const logger = pino();
 const app = express();
@@ -59,6 +62,21 @@ app.use('/api/v1/projects', projectsRoutes);
 app.use('/api/v1/annotations', annotationsRoutes);
 app.use('/api/v1/graph', graphRoutes);
 app.use('/api/v1/notifications', notificationsRoutes);
+app.use('/api/v1/challenges', challengesRoutes);
+app.use('/api/v1/admin', adminRoutes);
+app.use('/api/v1/public', publicRoutes);
+
+// OpenAPI
+app.get('/api/v1/docs', (req, res) => {
+  res.json({
+    openapi: '3.0.0',
+    info: { title: 'BhuNiti Core API', version: '1.0.0' },
+    paths: {
+      '/api/v1/public/overview': { get: { responses: { '200': { description: 'OK' } } } },
+      '/api/v1/admin/queue': { get: { responses: { '200': { description: 'OK' } } } }
+    }
+  });
+});
 
 // Health check with live DB ping
 app.get('/api/v1/health', async (_req, res) => {

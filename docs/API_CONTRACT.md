@@ -378,6 +378,72 @@
 
 ---
 
+## Innovation Portal — `/api/v1/challenges`
+
+### GET /api/v1/challenges
+- **Auth:** Optional.
+- **Query:** `?type=...&status=...`
+- **Response:** `{ data: Challenge[] }`
+
+### GET /api/v1/challenges/summary
+- **Auth:** Optional.
+- **Response:** `{ data: { type, status, count }[] }`
+
+### POST /api/v1/challenges
+- **Auth:** Bearer + `admin:users`
+- **Body:** `{ type, title, description, status, deadline, org_id }`
+- **Response:** `{ data: Challenge }`
+
+### POST /api/v1/challenges/:id/interest
+- **Auth:** Bearer required.
+- **Response:** `{ data: { success } }`
+
+---
+
+## Admin — `/api/v1/admin`
+
+### GET /api/v1/admin/queue
+- **Auth:** Bearer + `document:approve`
+- **Response:** `{ data: { entity_type, id, title, status, extracted_metadata, age_days }[] }`
+
+### POST /api/v1/admin/queue/bulk-approve
+- **Auth:** Bearer + `document:approve`
+- **Body:** `{ items: { entity_type, id }[], note?: string }`
+- **Response:** `{ data: { success, count } }`
+- **Side effect:** Triggers ingestion on `ai-service`.
+
+### POST /api/v1/admin/queue/bulk-reject
+- **Auth:** Bearer + `document:approve`
+- **Body:** `{ items: { entity_type, id }[], note?: string }`
+- **Response:** `{ data: { success, count } }`
+
+### GET /api/v1/admin/audit
+- **Auth:** Bearer + `admin:audit`
+- **Query:** `?actor=&action=&entity=&date_from=&date_to=`
+- **Response:** `{ data: AuditEvent[] }`
+
+### GET /api/v1/admin/audit/export
+- **Auth:** Bearer + `admin:audit`
+- **Response:** CSV file of audit events.
+
+### GET /api/v1/admin/system-health
+- **Auth:** Bearer + `admin:users`
+- **Response:** `{ data: { db, ai_service, stats: { chunk_count } } }`
+
+### GET /api/v1/admin/integrations
+- **Auth:** Bearer required.
+- **Response:** `{ data: { name, endpoint, docs }[] }`
+
+---
+
+## Public — `/api/v1/public`
+
+### GET /api/v1/public/overview
+- **Auth:** None.
+- **Response:** `{ data: { counts, highlights } }`
+
+---
+
 ## Health
 
 ### GET /api/v1/health
