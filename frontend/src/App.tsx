@@ -11,6 +11,8 @@ import { PageHeader } from '@/components/ui/PageHeader';
 const Login = lazy(() => import('@/pages/Login'));
 const Placeholder = lazy(() => import('@/pages/Placeholder'));
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
+const Repository = lazy(() => import('@/pages/Repository'));
+const DocumentDetail = lazy(() => import('@/pages/DocumentDetail'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,8 +46,8 @@ export default function App() {
               <Route path="/" element={<AppShell />}>
                 <Route index element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="search" element={<ProtectedRoute><Placeholder title="AI Search" description="Semantic search across all documents." /></ProtectedRoute>} />
-                <Route path="repository" element={<ProtectedRoute><Placeholder title="Document Repository" description="Browse and manage all uploaded reports." /></ProtectedRoute>} />
-                <Route path="repository/:id" element={<ProtectedRoute><Placeholder title="Document Details" /></ProtectedRoute>} />
+                <Route path="repository" element={<ProtectedRoute><Repository /></ProtectedRoute>} />
+                <Route path="repository/:id" element={<ProtectedRoute><DocumentDetail /></ProtectedRoute>} />
                 <Route path="datasets" element={<ProtectedRoute><Placeholder title="Datasets" description="Explore underlying tabular and vector datasets." /></ProtectedRoute>} />
                 <Route path="datasets/:id" element={<ProtectedRoute><Placeholder title="Dataset Details" /></ProtectedRoute>} />
                 <Route path="assistant" element={<ProtectedRoute><Placeholder title="AI Assistant" description="Chat with the evidence base." /></ProtectedRoute>} />
