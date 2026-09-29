@@ -44,11 +44,11 @@ export default function Admin() {
   // Auth Guard
   if (!user || (!can('document:approve') && !can('admin:users'))) {
     return (
-      <div className="p-8 text-center max-w-md mx-auto mt-20 bg-red-50 text-red-800 rounded-xl border border-red-200">
-        <Shield className="w-12 h-12 mx-auto mb-4 text-red-500" />
+      <div className="p-8 text-center max-w-md mx-auto mt-20 bg-semantic-error/10 text-neutral-800 rounded-xl border border-semantic-error/20">
+        <Shield className="w-12 h-12 mx-auto mb-4 text-semantic-error" />
         <h2 className="text-xl font-bold mb-2">403 Forbidden</h2>
         <p>You do not have permission to access the administration portal.</p>
-        <Button className="mt-4 bg-red-600 hover:bg-red-700" onClick={() => navigate('/')}>Return Home</Button>
+        <Button className="mt-4 bg-semantic-error hover:bg-semantic-error/90 text-white border-none" onClick={() => navigate('/')}>Return Home</Button>
       </div>
     );
   }
@@ -127,21 +127,21 @@ export default function Admin() {
                   {/* Right: AI Metadata Form */}
                   <div className="w-1/2 flex flex-col">
                     <div className="p-4 border-b border-neutral-200 bg-neutral-50 flex justify-between items-center">
-                      <h3 className="font-semibold flex items-center"><Brain className="w-4 h-4 mr-2 text-fuchsia-600" /> AI Extraction Review</h3>
-                      <Badge variant="outline" className="border-fuchsia-200 text-fuchsia-700 bg-fuchsia-50">92% Confidence</Badge>
+                      <h3 className="font-semibold flex items-center"><Brain className="w-4 h-4 mr-2 text-semantic-modelled" /> AI Extraction Review</h3>
+                      <Badge variant="outline" className="border-semantic-modelled/20 text-semantic-modelled bg-semantic-modelled/10">92% Confidence</Badge>
                     </div>
                     <div className="flex-1 p-6 overflow-y-auto space-y-5">
                       <div>
                         <label className="flex justify-between text-sm font-medium text-neutral-700 mb-1">
-                          Title <Tooltip content="High confidence"><span className="w-2 h-2 rounded-full bg-emerald-500 mt-1" /></Tooltip>
+                          Title <Tooltip content="High confidence"><span className="w-2 h-2 rounded-full bg-semantic-success mt-1" /></Tooltip>
                         </label>
                         <Input defaultValue="District Gazette 2024" />
                       </div>
-                      <div className="p-3 bg-amber-50 rounded-lg border border-amber-200 relative">
-                        <label className="flex justify-between text-sm font-medium text-amber-900 mb-1">
-                          Date <Tooltip content="Low confidence (Multiple dates found)"><span className="w-2 h-2 rounded-full bg-amber-500 mt-1 animate-pulse" /></Tooltip>
+                      <div className="p-3 bg-semantic-warning/10 rounded-lg border border-semantic-warning/20 relative">
+                        <label className="flex justify-between text-sm font-medium text-neutral-900 mb-1">
+                          Date <Tooltip content="Low confidence (Multiple dates found)"><span className="w-2 h-2 rounded-full bg-semantic-warning mt-1 animate-pulse" /></Tooltip>
                         </label>
-                        <Input defaultValue="2024-03-01" className="border-amber-300 bg-white" />
+                        <Input defaultValue="2024-03-01" className="border-semantic-warning/20 bg-white" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-neutral-700 mb-1">Visibility</label>
@@ -150,12 +150,12 @@ export default function Admin() {
                           <option value="internal">Internal Only</option>
                           <option value="restricted">Restricted</option>
                         </select>
-                        <p className="text-xs text-neutral-500 mt-1 flex items-start"><AlertTriangle className="w-3 h-3 mr-1 mt-0.5 text-amber-500" /> Restricted items will never appear in public search or AI context.</p>
+                        <p className="text-xs text-neutral-500 mt-1 flex items-start"><AlertTriangle className="w-3 h-3 mr-1 mt-0.5 text-semantic-warning" /> Restricted items will never appear in public search or AI context.</p>
                       </div>
                     </div>
                     <div className="p-4 border-t border-neutral-200 flex justify-end gap-2 bg-neutral-50">
                       <Button variant="outline" onClick={() => setUploadState('idle')}><XCircle className="w-4 h-4 mr-2" /> Reject</Button>
-                      <Button variant="primary" className="bg-emerald-600" onClick={() => { addToast({type:'success', title:'Approved & Ingested'}); setUploadState('idle'); }}><CheckCircle className="w-4 h-4 mr-2" /> Approve & Ingest</Button>
+                      <Button variant="primary" className="bg-semantic-success hover:bg-semantic-success" onClick={() => { addToast({type:'success', title:'Approved & Ingested'}); setUploadState('idle'); }}><CheckCircle className="w-4 h-4 mr-2" /> Approve & Ingest</Button>
                     </div>
                   </div>
                 </div>
@@ -176,7 +176,7 @@ export default function Admin() {
                           <td className="px-6 py-4 text-neutral-600">{q.uploader}</td>
                           <td className="px-6 py-4">
                             <div className="flex items-center">
-                              <div className="w-16 h-1.5 bg-neutral-200 rounded-full mr-2"><div className={`h-full rounded-full ${q.confidence > 80 ? 'bg-emerald-500' : 'bg-amber-500'}`} style={{width: `${q.confidence}%`}} /></div>
+                              <div className="w-16 h-1.5 bg-neutral-200 rounded-full mr-2"><div className={`h-full rounded-full ${q.confidence > 80 ? 'bg-semantic-success' : 'bg-semantic-warning'}`} style={{width: `${q.confidence}%`}} /></div>
                               <span className="text-xs font-medium">{q.confidence}%</span>
                             </div>
                           </td>
@@ -217,10 +217,10 @@ export default function Admin() {
                             </select>
                           </td>
                           <td className="px-6 py-4">
-                            {u.active ? <Badge variant="success" className="bg-emerald-50 text-emerald-700">Active</Badge> : <Badge variant="outline">Inactive</Badge>}
+                            {u.active ? <Badge variant="success" className="bg-semantic-success/10 text-semantic-success">Active</Badge> : <Badge variant="outline">Inactive</Badge>}
                           </td>
                           <td className="px-6 py-4">
-                            <Button size="sm" variant="ghost" className={u.active ? 'text-red-600 hover:text-red-700 hover:bg-red-50' : 'text-emerald-600 hover:bg-emerald-50'}>{u.active ? 'Deactivate' : 'Activate'}</Button>
+                            <Button size="sm" variant="ghost" className={u.active ? 'text-semantic-error hover:text-semantic-error hover:bg-semantic-error/10' : 'text-semantic-success hover:bg-semantic-success/10'}>{u.active ? 'Deactivate' : 'Activate'}</Button>
                           </td>
                         </tr>
                       ))}
@@ -257,7 +257,7 @@ export default function Admin() {
 
               <Drawer isOpen={!!selectedAudit} onClose={() => setSelectedAudit(null)} position="right" title="Audit Payload">
                 {selectedAudit && (
-                  <div className="bg-neutral-900 rounded-lg p-4 overflow-auto text-emerald-400 font-mono text-xs whitespace-pre-wrap h-[500px]">
+                  <div className="bg-neutral-900 rounded-lg p-4 overflow-auto text-semantic-success font-mono text-xs whitespace-pre-wrap h-[500px]">
                     {JSON.stringify(selectedAudit.meta, null, 2)}
                   </div>
                 )}
@@ -270,18 +270,18 @@ export default function Admin() {
               <PageHeader title="System Health" description="Infrastructure metrics and vector store synchronization." />
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Card><CardContent className="p-4 flex items-center"><Database className="w-8 h-8 text-emerald-500 mr-4" /><div><p className="text-xs text-neutral-500 font-medium">PostgreSQL</p><p className="font-bold">Healthy (12ms)</p></div></CardContent></Card>
-                <Card><CardContent className="p-4 flex items-center"><Brain className="w-8 h-8 text-emerald-500 mr-4" /><div><p className="text-xs text-neutral-500 font-medium">AI Service</p><p className="font-bold">Healthy (45ms)</p></div></CardContent></Card>
-                <Card><CardContent className="p-4 flex items-center"><Layers className="w-8 h-8 text-blue-500 mr-4" /><div><p className="text-xs text-neutral-500 font-medium">Vector Chunks</p><p className="font-bold">142,504</p></div></CardContent></Card>
+                <Card><CardContent className="p-4 flex items-center"><Database className="w-8 h-8 text-semantic-success mr-4" /><div><p className="text-xs text-neutral-500 font-medium">PostgreSQL</p><p className="font-bold">Healthy (12ms)</p></div></CardContent></Card>
+                <Card><CardContent className="p-4 flex items-center"><Brain className="w-8 h-8 text-semantic-success mr-4" /><div><p className="text-xs text-neutral-500 font-medium">AI Service</p><p className="font-bold">Healthy (45ms)</p></div></CardContent></Card>
+                <Card><CardContent className="p-4 flex items-center"><Layers className="w-8 h-8 text-semantic-info mr-4" /><div><p className="text-xs text-neutral-500 font-medium">Vector Chunks</p><p className="font-bold">142,504</p></div></CardContent></Card>
                 <Card><CardContent className="p-4 flex items-center"><Clock className="w-8 h-8 text-neutral-500 mr-4" /><div><p className="text-xs text-neutral-500 font-medium">Last Ingest</p><p className="font-bold">2 hours ago</p></div></CardContent></Card>
               </div>
 
-              <Card className="border-red-200">
-                <CardHeader className="bg-red-50 pb-3 border-b border-red-100"><CardTitle className="text-red-900 text-sm">Danger Zone</CardTitle></CardHeader>
+              <Card className="border-semantic-error/20">
+                <CardHeader className="bg-semantic-error/10 pb-3 border-b border-semantic-error/20"><CardTitle className="text-semantic-error text-sm">Danger Zone</CardTitle></CardHeader>
                 <CardContent className="p-6">
                   <h4 className="font-semibold text-neutral-900 mb-1">Rebuild Vector Index</h4>
                   <p className="text-sm text-neutral-600 mb-4">This will clear and regenerate all pgvector embeddings. This process is intensive and may cause temporary search degradation.</p>
-                  <Button variant="primary" className="bg-red-600 hover:bg-red-700 border-none" onClick={() => { setReindexing(true); setTimeout(() => { setReindexing(false); addToast({type:'success', title:'Index rebuilt'}); }, 2000); }} disabled={reindexing}>
+                  <Button variant="primary" className="bg-semantic-error hover:bg-semantic-error/90 border-none" onClick={() => { setReindexing(true); setTimeout(() => { setReindexing(false); addToast({type:'success', title:'Index rebuilt'}); }, 2000); }} disabled={reindexing}>
                     {reindexing ? 'Reindexing...' : 'Trigger Reindex'}
                   </Button>
                 </CardContent>
@@ -299,7 +299,7 @@ export default function Admin() {
               </div>
 
               <Card>
-                <CardHeader className="pb-2 border-b bg-neutral-50"><CardTitle className="text-sm font-mono flex items-center"><Badge className="mr-2 bg-blue-100 text-blue-800">GET</Badge> /api/v1/regions/:id/summary</CardTitle></CardHeader>
+                <CardHeader className="pb-2 border-b bg-neutral-50"><CardTitle className="text-sm font-mono flex items-center"><Badge className="mr-2 bg-semantic-info/10 text-semantic-info border-semantic-info/20">GET</Badge> /api/v1/regions/:id/summary</CardTitle></CardHeader>
                 <CardContent className="p-0">
                   <div className="bg-neutral-900 text-neutral-300 font-mono text-xs p-4 overflow-x-auto rounded-b-lg">
                     curl -X GET "https://api.bhuniti.gov.in/v1/regions/DIST-002/summary" \<br/>

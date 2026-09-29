@@ -232,9 +232,9 @@ export default function Assistant() {
                     {msg.role === 'assistant' && (
                       <div className="mb-2">
                         {msg.grounded ? (
-                          <Badge variant="success" className="bg-emerald-50 text-emerald-700 border-emerald-200">Source-backed</Badge>
+                          <Badge variant="success" className="bg-semantic-success/10 text-semantic-success border-semantic-success/20">Source-backed</Badge>
                         ) : msg.grounded === false ? (
-                          <Badge variant="warning" className="bg-amber-50 text-amber-700 border-amber-200">No grounded answer found</Badge>
+                          <Badge variant="warning" className="bg-semantic-warning/10 text-semantic-warning border-semantic-warning/20">No grounded answer found</Badge>
                         ) : null}
                       </div>
                     )}
@@ -355,7 +355,7 @@ export default function Assistant() {
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between mb-2">
                     <span className="flex items-center justify-center w-5 h-5 rounded bg-primary-100 text-primary-700 text-xs font-bold shrink-0">{idx + 1}</span>
-                    <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded ml-2 shrink-0">
+                    <span className="text-xs font-medium text-semantic-success bg-semantic-success/10 px-1.5 py-0.5 rounded ml-2 shrink-0">
                       {(src.relevance * 100).toFixed(0)}% match
                     </span>
                   </div>

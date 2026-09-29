@@ -34,7 +34,7 @@ export function ProtectedRoute({ children, permission }: ProtectedRouteProps) {
         <PageHeader title="Access Denied" />
         <div className="mt-8 bg-white border rounded-lg h-96 flex items-center justify-center">
           <div className="flex flex-col items-center justify-center text-center">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100 text-red-600 mb-4">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-semantic-error/10 text-semantic-error mb-4">
               <ShieldAlert className="h-6 w-6" />
             </div>
             <h3 className="text-lg font-semibold text-neutral-900">403 Forbidden</h3>

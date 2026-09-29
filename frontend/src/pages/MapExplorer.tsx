@@ -345,7 +345,7 @@ export default function MapExplorer() {
         {/* Legend Overlay */}
         <div className="absolute bottom-6 left-4 bg-white p-3 rounded-lg shadow-md border border-neutral-200 z-10 w-64">
           <div className="text-xs font-semibold text-neutral-700 mb-2 truncate">{currentLayerInfo?.label}</div>
-          <div className="h-2 w-full bg-gradient-to-r from-slate-50 to-teal-700 rounded-full mb-1" />
+          <div className="h-2 w-full bg-gradient-to-r from-neutral-50 to-primary-700 rounded-full mb-1" />
           <div className="flex justify-between text-xs text-neutral-500">
             <span>Low</span>
             <span>High</span>
@@ -380,11 +380,11 @@ export default function MapExplorer() {
                         <div className="grid grid-cols-2 gap-3">
                           <div className="p-3 bg-neutral-50 rounded-lg border">
                             <p className="text-xs text-neutral-500 uppercase mb-1">Built-up Area</p>
-                            <p className="text-lg font-semibold">12.4% <span className="text-xs text-emerald-600 ml-1">↑ 1.2%</span></p>
+                            <p className="text-lg font-semibold">12.4% <span className="text-xs text-semantic-success ml-1">↑ 1.2%</span></p>
                           </div>
                           <div className="p-3 bg-neutral-50 rounded-lg border">
                             <p className="text-xs text-neutral-500 uppercase mb-1">Disputes</p>
-                            <p className="text-lg font-semibold">45 / 100k <span className="text-xs text-red-600 ml-1">↑ 5%</span></p>
+                            <p className="text-lg font-semibold">45 / 100k <span className="text-xs text-semantic-error ml-1">↑ 5%</span></p>
                           </div>
                         </div>
 
@@ -447,7 +447,7 @@ export default function MapExplorer() {
             
             <div className="pt-4 mt-4 border-t border-neutral-200 flex flex-col gap-2 shrink-0">
               {isOfficial && (
-                <Button className="w-full bg-emerald-600 hover:bg-emerald-700" onClick={() => navigate(`/scenarios?region=${region}`)}>
+                <Button className="w-full bg-semantic-success hover:bg-semantic-success/90" onClick={() => navigate(`/scenarios?region=${region}`)}>
                   <Sparkles className="w-4 h-4 mr-2" /> Model Scenarios
                 </Button>
               )}

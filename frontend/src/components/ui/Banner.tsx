@@ -9,9 +9,9 @@ export interface BannerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function Banner({ variant = 'info', message, className, ...props }: BannerProps) {
   const variants = {
-    info: 'bg-blue-50 text-blue-800 border-blue-200',
-    warning: 'bg-amber-50 text-amber-800 border-amber-200',
-    caveat: 'bg-purple-50 text-purple-800 border-purple-200',
+    info: 'bg-semantic-info/10 text-semantic-info border-semantic-info/20',
+    warning: 'bg-semantic-warning/10 text-semantic-warning border-semantic-warning/20',
+    caveat: 'bg-semantic-modelled/10 text-semantic-modelled border-semantic-modelled/20',
   };
 
   const icons = {

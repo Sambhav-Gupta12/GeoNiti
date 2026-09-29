@@ -39,9 +39,9 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             key={toast.id}
             className="flex items-start p-4 bg-white rounded-lg shadow-lg border border-neutral-200 pointer-events-auto animate-in slide-in-from-right-full"
           >
-            {toast.type === 'success' && <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 shrink-0" />}
-            {toast.type === 'error' && <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 shrink-0" />}
-            {toast.type === 'info' && <Info className="w-5 h-5 text-blue-500 mr-3 mt-0.5 shrink-0" />}
+            {toast.type === 'success' && <CheckCircle className="w-5 h-5 text-semantic-success mr-3 mt-0.5 shrink-0" />}
+            {toast.type === 'error' && <AlertCircle className="w-5 h-5 text-semantic-error mr-3 mt-0.5 shrink-0" />}
+            {toast.type === 'info' && <Info className="w-5 h-5 text-semantic-info mr-3 mt-0.5 shrink-0" />}
             <div className="flex-1">
               <h4 className="text-sm font-semibold text-neutral-900">{toast.title}</h4>
               {toast.message && <p className="text-sm text-neutral-500 mt-1">{toast.message}</p>}

@@ -154,7 +154,7 @@ export default function Login() {
                 error={!!errors.email}
                 {...register('email')} 
               />
-              {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
+              {errors.email && <p className="mt-1 text-sm text-semantic-error">{errors.email.message}</p>}
             </div>
 
             <div>
@@ -179,7 +179,7 @@ export default function Login() {
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
-              {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>}
+              {errors.password && <p className="mt-1 text-sm text-semantic-error">{errors.password.message}</p>}
             </div>
 
             <Button type="submit" className="w-full h-11 text-base mt-2" isLoading={isSubmitting}>

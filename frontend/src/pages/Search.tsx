@@ -74,7 +74,7 @@ export default function Search() {
                 <Badge variant="primary">{res.document.document_type}</Badge>
                 <span className="text-xs text-neutral-500">{res.document.year} • {res.document.authors?.[0] || 'Unknown'}</span>
                 {isSemanticOnly && (
-                  <Badge variant="illustrative" className="bg-purple-100 text-purple-700 border-purple-200">
+                  <Badge variant="illustrative" className="bg-semantic-modelled/10 text-semantic-modelled border-semantic-modelled/20">
                     <Sparkles className="w-3 h-3 mr-1 inline" /> Semantic match
                   </Badge>
                 )}

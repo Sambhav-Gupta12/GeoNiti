@@ -111,10 +111,10 @@ export default function Datasets() {
                   <CardContent className="p-5 flex flex-col h-full">
                     <div className="flex justify-between items-start mb-2">
                       <div className="flex gap-2 mb-2">
-                        {ds.is_illustrative ? <Badge variant="illustrative">Illustrative</Badge> : <Badge variant="success" className="bg-emerald-50 text-emerald-700 border-emerald-200">Sourced</Badge>}
+                        {ds.is_illustrative ? <Badge variant="illustrative">Illustrative</Badge> : <Badge variant="success" className="bg-semantic-success/10 text-semantic-success border-semantic-success/20">Sourced</Badge>}
                         <Badge variant="outline">{ds.version}</Badge>
                       </div>
-                      {ds.visibility === 'restricted' && <Tooltip content="Restricted access"><Lock className="w-4 h-4 text-amber-500" /></Tooltip>}
+                      {ds.visibility === 'restricted' && <Tooltip content="Restricted access"><Lock className="w-4 h-4 text-semantic-warning" /></Tooltip>}
                     </div>
                     
                     <h3 className="font-semibold text-lg text-neutral-900 leading-snug mb-1">{ds.title}</h3>

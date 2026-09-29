@@ -233,7 +233,7 @@ export default function Scenarios() {
 
                 <div className="flex justify-between pt-4 border-t">
                   <Button variant="outline" onClick={() => setStep(1)}>Back</Button>
-                  <Button variant="primary" onClick={runScenario} className="bg-emerald-600 hover:bg-emerald-700 border-none"><Play className="w-4 h-4 mr-2" /> Run Model</Button>
+                  <Button variant="primary" onClick={runScenario} className="bg-semantic-success hover:bg-semantic-success/90 border-none"><Play className="w-4 h-4 mr-2" /> Run Model</Button>
                 </div>
               </div>
             )}
@@ -242,8 +242,8 @@ export default function Scenarios() {
               <div className="py-12 flex flex-col items-center justify-center space-y-6">
                 <div className="relative w-20 h-20">
                   <div className="absolute inset-0 rounded-full border-4 border-neutral-100" />
-                  <div className="absolute inset-0 rounded-full border-4 border-emerald-500 border-t-transparent animate-spin" />
-                  <Beaker className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-emerald-600" />
+                  <div className="absolute inset-0 rounded-full border-4 border-semantic-success border-t-transparent animate-spin" />
+                  <Beaker className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-semantic-success" />
                 </div>
                 <div className="text-center">
                   <h3 className="text-lg font-semibold text-neutral-900 mb-1">
@@ -270,7 +270,7 @@ export default function Scenarios() {
               <Button variant="outline" size="sm" onClick={() => setStep(2)}><Settings2 className="w-4 h-4 mr-2" /> Tweak</Button>
               <Button variant="outline" size="sm"><GitCompare className="w-4 h-4 mr-2" /> Compare</Button>
               <Button variant="outline" size="sm" onClick={handleExport}><Download className="w-4 h-4 mr-2" /> Export</Button>
-              <Button variant="primary" size="sm" className="bg-emerald-600 border-none" onClick={() => setSaveDialog(true)}><Save className="w-4 h-4 mr-2" /> Save to Project</Button>
+              <Button variant="primary" size="sm" onClick={() => setSaveDialog(true)}><Save className="w-4 h-4 mr-2" /> Save to Project</Button>
             </div>
           </div>
 
@@ -305,19 +305,18 @@ export default function Scenarios() {
                     </ResponsiveContainer>
                   </div>
                   <div className="flex items-center justify-center space-x-6 mt-4 text-xs text-neutral-600">
-                    <span className="flex items-center"><div className="w-3 h-3 bg-[#0f766e] rounded-sm mr-2" /> Actual History</span>
-                    <span className="flex items-center"><div className="w-3 h-0.5 bg-[#94a3b8] mr-2" /> Baseline (Do Nothing)</span>
-                    <span className="flex items-center"><div className="w-3 h-0.5 bg-[#10b981] mr-2" /> Scenario Projection</span>
-                    <span className="flex items-center"><div className="w-3 h-3 bg-[#ecfdf5] border border-[#10b981] rounded-sm mr-2" /> 80% Uncertainty Band</span>
+                    <span className="flex items-center"><div className="w-3 h-3 bg-neutral-600 rounded-sm mr-2" /> Actual History</span>
+                    <span className="flex items-center"><div className="w-3 h-0.5 bg-neutral-400 mr-2" /> Baseline (Do Nothing)</span>
+                    <span className="flex items-center"><div className="w-3 h-0.5 bg-semantic-modelled mr-2" /> Scenario Projection</span>
+                    <span className="flex items-center"><div className="w-3 h-3 bg-primary-50 border border-semantic-modelled rounded-sm mr-2" /> 80% Uncertainty Band</span>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* AI Explanation */}
-              <Card className="border-emerald-200">
-                <CardHeader className="bg-emerald-50 pb-2 flex flex-row items-center justify-between border-b border-emerald-100">
-                  <CardTitle className="text-emerald-900 text-sm flex items-center"><Sparkles className="w-4 h-4 mr-2" /> AI Analysis</CardTitle>
-                  <Badge variant="illustrative" className="bg-white border-emerald-200 text-emerald-700">Modelled Output</Badge>
+              <Card className="border-semantic-modelled/30">
+                <CardHeader className="bg-primary-50 pb-2 flex flex-row items-center justify-between border-b border-primary-100">
+                  <CardTitle className="text-primary-900 text-sm flex items-center"><Sparkles className="w-4 h-4 mr-2" /> AI Analysis</CardTitle>
+                  <Badge variant="illustrative" className="bg-white border-primary-200 text-primary-700">Modelled Output</Badge>
                 </CardHeader>
                 <CardContent className="pt-4 text-sm text-neutral-700 leading-relaxed space-y-3">
                   <p>

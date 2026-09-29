@@ -48,13 +48,13 @@ export default function DatasetDetail() {
         <button onClick={() => navigate(-1)} className="flex items-center text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-1" /> Back
         </button>
-        <Card className="max-w-2xl mx-auto mt-12 overflow-hidden border-amber-200">
-          <div className="bg-amber-50 p-6 flex flex-col items-center text-center border-b border-amber-100">
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm border border-amber-100">
-              <Lock className="w-8 h-8 text-amber-500" />
+        <Card className="max-w-2xl mx-auto mt-12 overflow-hidden border-semantic-warning/20">
+          <div className="bg-semantic-warning/10 p-6 flex flex-col items-center text-center border-b border-semantic-warning/20">
+            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm border border-semantic-warning/20">
+              <Lock className="w-8 h-8 text-semantic-warning" />
             </div>
             <h2 className="text-2xl font-bold text-neutral-900">{ds.title}</h2>
-            <p className="text-amber-800 mt-2 font-medium">Restricted Dataset</p>
+            <p className="text-neutral-800 mt-2 font-medium">Restricted Dataset</p>
           </div>
           <CardContent className="p-8 text-center space-y-6">
             <p className="text-neutral-600 max-w-md mx-auto">
@@ -87,9 +87,9 @@ export default function DatasetDetail() {
         <div className="flex-1 min-w-0 space-y-8">
           <div>
             <div className="flex gap-2 mb-3">
-              {ds.is_illustrative ? <Badge variant="illustrative">Illustrative</Badge> : <Badge variant="success" className="bg-emerald-50 text-emerald-700 border-emerald-200">Sourced</Badge>}
+              {ds.is_illustrative ? <Badge variant="illustrative">Illustrative</Badge> : <Badge variant="success" className="bg-semantic-success/10 text-semantic-success border-semantic-success/20">Sourced</Badge>}
               <Badge variant="outline">v2.1</Badge>
-              {isRestricted && <Badge variant="error" className="bg-red-50 text-red-700 border-red-200"><Lock className="w-3 h-3 mr-1 inline" /> Restricted</Badge>}
+              {isRestricted && <Badge variant="error" className="bg-semantic-error/10 text-semantic-error border-semantic-error/20"><Lock className="w-3 h-3 mr-1 inline" /> Restricted</Badge>}
             </div>
             <h1 className="text-3xl font-bold text-neutral-900">{ds.title}</h1>
             <p className="text-neutral-500 mt-2 font-medium">{ds.org}</p>
@@ -178,7 +178,7 @@ export default function DatasetDetail() {
                     <h4 className="font-semibold text-sm">Completeness Matrix</h4>
                     <div className="grid grid-cols-4 gap-1 max-w-sm">
                       {['', '2021', '2022', '2023', 'region_id', '100%', '100%', '100%', 'value', '98%', '99%', '95%'].map((v, i) => (
-                        <div key={i} className={`p-2 text-center text-xs ${i < 4 || i % 4 === 0 ? 'font-semibold text-neutral-500 bg-neutral-50' : 'bg-emerald-100 text-emerald-800 font-medium'}`}>
+                        <div key={i} className={`p-2 text-center text-xs ${i < 4 || i % 4 === 0 ? 'font-semibold text-neutral-500 bg-neutral-50' : 'bg-semantic-success/10 text-semantic-success font-medium'}`}>
                           {v}
                         </div>
                       ))}
@@ -210,7 +210,7 @@ export default function DatasetDetail() {
                 <div><span className="font-medium text-neutral-900 block">Derived from</span> Raw Survey Roll 2020-2024</div>
               </div>
               <div className="flex items-start text-neutral-600">
-                <CheckCircle2 className="w-4 h-4 mr-2 mt-0.5 text-emerald-500" />
+                <CheckCircle2 className="w-4 h-4 mr-2 mt-0.5 text-semantic-success" />
                 <div><span className="font-medium text-neutral-900 block">Referenced by</span> 3 Policy Documents</div>
               </div>
             </CardContent>

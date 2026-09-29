@@ -167,8 +167,8 @@ export default function Analytics() {
       </div>
 
       {indInfo?.illustrative && (
-        <div className="bg-amber-50 border border-amber-200 text-amber-800 px-4 py-2 rounded-lg text-sm flex items-center">
-          <Info className="w-4 h-4 mr-2 shrink-0" />
+        <div className="bg-semantic-warning/10 border border-semantic-warning/20 text-neutral-800 px-4 py-2 rounded-lg text-sm flex items-center">
+          <Info className="w-4 h-4 mr-2 shrink-0 text-semantic-warning" />
           The currently selected indicator ({indInfo.label}) contains illustrative data for demonstration.
         </div>
       )}
@@ -190,7 +190,7 @@ export default function Analytics() {
           {isNlLoading && <div className="px-5 pb-3 text-sm text-neutral-500 flex items-center"><Sparkles className="w-3 h-3 mr-2 animate-pulse" /> Interpreting query...</div>}
           
           {nlError && (
-            <div className="px-5 pb-3 pt-1 text-sm text-red-600 flex items-center">
+            <div className="px-5 pb-3 pt-1 text-sm text-semantic-error flex items-center">
               <AlertCircle className="w-4 h-4 mr-2 shrink-0" /> {nlError}
             </div>
           )}
@@ -324,7 +324,7 @@ export default function Analytics() {
                     {chartData?.series.map((d: any, i: number) => d.isAnomaly && (
                       <div key={i} className="absolute pointer-events-auto" style={{ left: `${(i / (chartData.series.length - 1)) * 100}%`, bottom: '60%' }}>
                         <Tooltip content={<div className="max-w-xs"><p className="font-semibold text-xs mb-1">Anomaly Detected</p><p className="text-xs">{d.anomalyReason}</p></div>}>
-                          <div className="w-4 h-4 bg-red-500 rounded-full border-2 border-white cursor-pointer animate-pulse -ml-2 shadow-sm" />
+                          <div className="w-4 h-4 bg-semantic-error rounded-full border-2 border-white cursor-pointer animate-pulse -ml-2 shadow-sm" />
                         </Tooltip>
                       </div>
                     ))}
@@ -395,8 +395,8 @@ export default function Analytics() {
                 </div>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 text-amber-800 p-3 rounded-lg text-xs flex items-start leading-relaxed">
-                <AlertCircle className="w-4 h-4 mr-2 shrink-0 mt-0.5" />
+              <div className="bg-semantic-warning/10 border border-semantic-warning/20 text-neutral-800 p-3 rounded-lg text-xs flex items-start leading-relaxed">
+                <AlertCircle className="w-4 h-4 mr-2 shrink-0 mt-0.5 text-semantic-warning" />
                 <span><strong>Caution:</strong> Correlation is not causation. Confounding variables or non-linear relationships may exist.</span>
               </div>
             </CardContent>

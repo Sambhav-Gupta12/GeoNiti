@@ -145,7 +145,7 @@ export default function RegionProfile() {
           </div>
           <div className="flex flex-wrap gap-2">
             <Button variant="outline" onClick={() => navigate(`/map?region=${id}`)}><MapIcon className="w-4 h-4 mr-2" /> Open on Map</Button>
-            <Button variant="primary" className="bg-emerald-600 hover:bg-emerald-700 border-none" onClick={() => navigate(`/scenarios?region=${id}`)}><Sparkles className="w-4 h-4 mr-2" /> Run Scenario</Button>
+            <Button variant="primary" className="bg-semantic-success hover:bg-semantic-success/90 border-none" onClick={() => navigate(`/scenarios?region=${id}`)}><Sparkles className="w-4 h-4 mr-2" /> Run Scenario</Button>
             <Button variant="secondary"><Plus className="w-4 h-4 mr-2" /> Add to project</Button>
           </div>
         </div>
@@ -190,14 +190,14 @@ export default function RegionProfile() {
               {mockTrendData.map((d, i) => d.isAnomaly && (
                 <div key={i} className="absolute pointer-events-auto" style={{ left: `${(i / (mockTrendData.length - 1)) * 100}%`, bottom: '50%' }}>
                   <Tooltip content={<div className="max-w-xs"><p className="font-semibold text-xs mb-1">Anomaly Detected</p><p className="text-xs">{d.anomalyReason}</p></div>}>
-                    <div className="w-4 h-4 bg-red-500 rounded-full border-2 border-white cursor-pointer animate-pulse -ml-2" />
+                    <div className="w-4 h-4 bg-semantic-error rounded-full border-2 border-white cursor-pointer animate-pulse -ml-2" />
                   </Tooltip>
                 </div>
               ))}
             </div>
           </div>
           <div className="mt-4 flex items-center text-xs text-neutral-500 bg-neutral-50 p-2 rounded">
-            <AlertCircle className="w-4 h-4 text-amber-500 mr-2" />
+            <AlertCircle className="w-4 h-4 text-semantic-warning mr-2" />
             Anomalies are detected using a robust MAD algorithm on year-over-year change.
           </div>
         </CardContent>
@@ -254,10 +254,10 @@ export default function RegionProfile() {
               {/* Legend */}
               <div className="absolute bottom-4 left-4 bg-white/90 border p-2 rounded-lg text-xs space-y-1 z-10 backdrop-blur-sm">
                 <div className="font-semibold mb-2">Node Types</div>
-                <div className="flex items-center"><div className="w-3 h-3 rounded-full bg-slate-50 border-2 border-teal-600 mr-2" /> Region</div>
-                <div className="flex items-center"><div className="w-3 h-3 rounded bg-fuchsia-50 border-2 border-fuchsia-600 mr-2" /> Policy</div>
-                <div className="flex items-center"><div className="w-3 h-3 rounded bg-teal-50 border-2 border-teal-600 mr-2" /> Research</div>
-                <div className="flex items-center"><div className="w-3 h-3 rounded bg-blue-50 border-2 border-blue-500 mr-2" /> Dataset</div>
+                <div className="flex items-center"><div className="w-3 h-3 rounded-full bg-neutral-50 border-2 border-primary-600 mr-2" /> Region</div>
+                <div className="flex items-center"><div className="w-3 h-3 rounded bg-primary-50 border-2 border-primary-500 mr-2" /> Policy</div>
+                <div className="flex items-center"><div className="w-3 h-3 rounded bg-secondary-50 border-2 border-secondary-500 mr-2" /> Research</div>
+                <div className="flex items-center"><div className="w-3 h-3 rounded bg-neutral-100 border-2 border-neutral-400 mr-2" /> Dataset</div>
               </div>
             </div>
           ) : (
@@ -309,16 +309,16 @@ export default function RegionProfile() {
 
         <div>
           <h3 className="text-lg font-semibold text-neutral-900 mb-4 border-b pb-2">Data Notes</h3>
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 space-y-4 text-sm text-amber-900">
+          <div className="bg-semantic-warning/10 border border-semantic-warning/20 rounded-lg p-4 space-y-4 text-sm text-neutral-900">
             <div className="flex items-start">
-              <Info className="w-5 h-5 text-amber-600 mr-2 shrink-0" />
+              <Info className="w-5 h-5 text-semantic-warning mr-2 shrink-0" />
               <div>
                 <p className="font-semibold">Illustrative Flags Active</p>
                 <p className="mt-1 opacity-90">Population and dispute metrics for this region are illustrative defaults generated for demonstration purposes.</p>
               </div>
             </div>
             <div className="flex items-start">
-              <MapIcon className="w-5 h-5 text-amber-600 mr-2 shrink-0" />
+              <MapIcon className="w-5 h-5 text-semantic-warning mr-2 shrink-0" />
               <div>
                 <p className="font-semibold">Resolution Note</p>
                 <p className="mt-1 opacity-90">Built-up area is calculated at a 1km resolution; micro-level accuracy is not guaranteed.</p>

@@ -23,7 +23,7 @@ export function StatCard({ title, value, trend, trendLabel, icon: Icon, classNam
       </div>
       {trend !== undefined && (
         <div className="mt-2 flex items-center text-sm">
-          <span className={cn("flex items-center font-medium", trend > 0 ? "text-emerald-600" : trend < 0 ? "text-red-600" : "text-neutral-500")}>
+          <span className={cn("flex items-center font-medium", trend > 0 ? "text-semantic-success" : trend < 0 ? "text-semantic-error" : "text-neutral-500")}>
             {trend > 0 ? <ArrowUpRight className="mr-1 w-4 h-4" /> : trend < 0 ? <ArrowDownRight className="mr-1 w-4 h-4" /> : null}
             {Math.abs(trend)}%
           </span>

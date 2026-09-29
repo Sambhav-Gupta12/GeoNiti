@@ -106,19 +106,19 @@ export default function Dashboard() {
 
       {/* Admin specific row */}
       {isAdmin && (
-        <section className="bg-amber-50 border border-amber-200 p-6 rounded-xl flex items-center justify-between">
+        <section className="bg-semantic-warning/10 border border-semantic-warning/20 p-6 rounded-xl flex items-center justify-between">
           <div className="flex items-center">
-            <ShieldAlert className="w-8 h-8 text-amber-600 mr-4" />
+            <ShieldAlert className="w-8 h-8 text-semantic-warning mr-4" />
             <div>
-              <h3 className="text-lg font-semibold text-amber-900">Pending Approvals</h3>
-              <p className="text-amber-700 text-sm">Documents and datasets awaiting review.</p>
+              <h3 className="text-lg font-semibold text-neutral-900">Pending Approvals</h3>
+              <p className="text-neutral-700 text-sm">Documents and datasets awaiting review.</p>
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <span className="text-3xl font-bold text-amber-700">
+            <span className="text-3xl font-bold text-semantic-warning">
               {isLoadingAdmin ? <Skeleton className="w-12 h-8" /> : adminQueue?.length || 0}
             </span>
-            <Button onClick={() => navigate('/admin/queue')} variant="secondary" className="bg-amber-600 hover:bg-amber-700 border-none">Review Queue</Button>
+            <Button onClick={() => navigate('/admin/queue')} variant="secondary" className="bg-semantic-warning hover:bg-semantic-warning/90 border-none">Review Queue</Button>
           </div>
         </section>
       )}
@@ -175,11 +175,11 @@ export default function Dashboard() {
                 <div><p className="text-xs text-neutral-500 uppercase tracking-wider">Datasets</p><p className="font-semibold">{publicOverview?.counts?.datasets || 0}</p></div>
               </div>
               <div className="bg-white border rounded-lg p-4 flex items-center">
-                <MapIcon className="w-5 h-5 text-emerald-500 mr-3" />
+                <MapIcon className="w-5 h-5 text-semantic-success mr-3" />
                 <div><p className="text-xs text-neutral-500 uppercase tracking-wider">Regions</p><p className="font-semibold">32</p></div>
               </div>
               <div className="bg-white border rounded-lg p-4 flex items-center">
-                <Sparkles className="w-5 h-5 text-amber-500 mr-3" />
+                <Sparkles className="w-5 h-5 text-semantic-warning mr-3" />
                 <div><p className="text-xs text-neutral-500 uppercase tracking-wider">Challenges</p><p className="font-semibold">{publicOverview?.counts?.challenges || 0}</p></div>
               </div>
             </div>
@@ -306,8 +306,8 @@ export default function Dashboard() {
                 {isOfficial && (
                   <Card className="cursor-pointer hover:border-primary-300 transition-colors" onClick={() => navigate('/scenarios')}>
                     <CardContent className="p-4 flex items-center">
-                      <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-3 shrink-0">
-                        <Sparkles className="w-4 h-4 text-emerald-600" />
+                      <div className="w-8 h-8 rounded-full bg-semantic-success/10 flex items-center justify-center mr-3 shrink-0">
+                        <Sparkles className="w-4 h-4 text-semantic-success" />
                       </div>
                       <div>
                         <p className="font-medium text-sm">Industrial Policy Scenario</p>

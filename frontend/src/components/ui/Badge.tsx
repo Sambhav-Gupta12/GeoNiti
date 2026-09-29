@@ -11,11 +11,11 @@ export function Badge({ className, variant = 'default', children, ...props }: Ba
     default: 'bg-neutral-100 text-neutral-800',
     primary: 'bg-primary-100 text-primary-800',
     secondary: 'bg-secondary-100 text-secondary-800',
-    success: 'bg-emerald-100 text-emerald-800',
-    warning: 'bg-amber-100 text-amber-800',
-    error: 'bg-red-100 text-red-800',
-    illustrative: 'bg-orange-100 text-orange-800 border border-orange-200',
-    modelled: 'bg-purple-100 text-purple-800 border border-purple-200',
+    success: 'bg-semantic-success/10 text-semantic-success border border-semantic-success/20',
+    warning: 'bg-semantic-warning/10 text-semantic-warning border border-semantic-warning/20',
+    error: 'bg-semantic-error/10 text-semantic-error border border-semantic-error/20',
+    illustrative: 'bg-semantic-illustrative/10 text-semantic-illustrative border border-semantic-illustrative/20',
+    modelled: 'bg-semantic-modelled/10 text-semantic-modelled border border-semantic-modelled/20',
   };
 
   return (

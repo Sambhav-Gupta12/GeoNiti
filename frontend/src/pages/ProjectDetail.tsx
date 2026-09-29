@@ -58,7 +58,7 @@ export default function ProjectDetail() {
             <div>
               <h1 className="text-2xl font-bold text-neutral-900">{projName}</h1>
               <div className="flex items-center text-sm text-neutral-500 mt-1">
-                {isViewer ? <Badge variant="outline" className="mr-2 border-amber-200 text-amber-700 bg-amber-50">View Only</Badge> : <Badge variant="outline" className="mr-2">Editor</Badge>}
+                {isViewer ? <Badge variant="outline" className="mr-2 border-semantic-warning/20 text-semantic-warning bg-semantic-warning/10">View Only</Badge> : <Badge variant="outline" className="mr-2">Editor</Badge>}
                 <Users className="w-4 h-4 mr-1" /> 2 members
               </div>
             </div>
@@ -85,10 +85,10 @@ export default function ProjectDetail() {
                     </div>
                     
                     <div className="w-8 h-8 rounded bg-neutral-100 flex items-center justify-center mr-3 shrink-0">
-                      {item.type === 'document' && <FileText className="w-4 h-4 text-blue-600" />}
-                      {item.type === 'map_view' && <MapIcon className="w-4 h-4 text-emerald-600" />}
-                      {item.type === 'scenario_run' && <Sparkles className="w-4 h-4 text-fuchsia-600" />}
-                      {item.type === 'chat_answer' && <MessageSquare className="w-4 h-4 text-amber-600" />}
+                      {item.type === 'document' && <FileText className="w-4 h-4 text-primary-600" />}
+                      {item.type === 'map_view' && <MapIcon className="w-4 h-4 text-secondary-600" />}
+                      {item.type === 'scenario_run' && <Sparkles className="w-4 h-4 text-semantic-modelled" />}
+                      {item.type === 'chat_answer' && <MessageSquare className="w-4 h-4 text-semantic-info" />}
                     </div>
                     
                     <div className="flex-1 min-w-0">
@@ -173,10 +173,10 @@ export default function ProjectDetail() {
                   </div>
                   <div className="flex items-center justify-between p-3 border rounded-lg bg-white">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold text-sm">AL</div>
+                      <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center font-semibold text-sm">AL</div>
                       <div><p className="font-semibold text-sm text-neutral-900">Alex L.</p><p className="text-xs text-neutral-500">Editor</p></div>
                     </div>
-                    {!isViewer && <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-700 hover:bg-red-50">Remove</Button>}
+                    {!isViewer && <Button variant="ghost" size="sm" className="text-semantic-error hover:text-semantic-error hover:bg-semantic-error/10">Remove</Button>}
                   </div>
                 </div>
               </div>

@@ -11,7 +11,7 @@ export interface ErrorStateProps extends React.HTMLAttributes<HTMLDivElement> {
 export function ErrorState({ message = 'An error occurred while loading data.', onRetry, className, ...props }: ErrorStateProps) {
   return (
     <div className={cn("flex flex-col items-center justify-center p-8 text-center", className)} {...props}>
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100 text-red-600 mb-4">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-semantic-error/10 text-semantic-error mb-4">
         <AlertCircle className="h-6 w-6" />
       </div>
       <h3 className="text-lg font-semibold text-neutral-900">Something went wrong</h3>
