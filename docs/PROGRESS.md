@@ -19,7 +19,7 @@
 
 ## Frontend Tasks
 - [x] F0: Frontend setup, Design System & COMPONENTS.md
-- [ ] F1: Authentication & Layout Shell
+- [x] F1: Authentication & Layout Shell
 - [ ] F2: Document Repository UI
 - [ ] F3: Semantic Search & AI Research Assistant (RAG Chat)
 - [ ] F4: GIS Map Interface (MapLibre)

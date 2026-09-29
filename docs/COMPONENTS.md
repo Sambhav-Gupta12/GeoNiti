@@ -41,3 +41,19 @@ This document serves as the registry for all React UI components available in `s
 | **LineTrend** | `data`, `xKey`, `lines` ({key, color}), `yLabel` | `<LineTrend data={data} xKey="year" lines={[{key:'val', color:'red'}]} />` |
 | **BarCompare**| `data`, `xKey`, `bars` ({key, color}), `yLabel` | `<BarCompare data={data} xKey="region" bars={[{key:'val', color:'blue'}]} />` |
 | **RankList** | `data`, `xKey`, `yKey`, `color` | `<RankList data={data} xKey="value" yKey="name" color="blue" />` |
+
+## Layout Shell (`@/components/layout/`)
+
+| Component | Props | Usage Example |
+|---|---|---|
+| **AppShell** | N/A | `<AppShell />` (Used as layout wrapper in React Router) |
+| **Sidebar** | N/A | `<Sidebar />` |
+| **TopBar** | N/A | `<TopBar />` |
+| **ErrorBoundary**| `children` | `<ErrorBoundary><App /></ErrorBoundary>` |
+
+## Auth (`@/components/auth/`)
+
+| Component | Props | Usage Example |
+|---|---|---|
+| **ProtectedRoute**| `children`, `permission?` | `<ProtectedRoute permission="admin:users"><Page /></ProtectedRoute>` |
+| **Can** (lib/auth)| `I`, `children`, `fallback?` | `<Can I="document:write"><Button>Edit</Button></Can>` |
