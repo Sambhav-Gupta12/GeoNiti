@@ -8,6 +8,7 @@ from app.api.assistant import router as assistant_router
 from app.api.metadata import router as metadata_router
 from app.api.recommend import router as recommend_router
 from app.api.analytics import router as analytics_router
+from app.api.scenario import router as scenario_router
 
 app = FastAPI(title="BhuNiti AI Service")
 
@@ -17,6 +18,7 @@ app.include_router(assistant_router)
 app.include_router(metadata_router)
 app.include_router(recommend_router)
 app.include_router(analytics_router)
+app.include_router(scenario_router)
 
 @app.get("/health")
 def health_check():

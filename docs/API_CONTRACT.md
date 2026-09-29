@@ -268,6 +268,32 @@
 
 ---
 
+## Policy Scenarios — `/api/v1/scenarios`
+
+### GET /api/v1/scenarios/parameters
+- **Auth:** Bearer required.
+- **Response:** `{ data: { key, label, unit, min_val, max_val, default, description, modifies_feature }[] }`
+
+### POST /api/v1/scenarios/run
+- **Auth:** Bearer + `scenario:run`
+- **Body:** `{ target_indicator: string, horizon: number, params: { [key]: number }, title?: string, description?: string }`
+- **Response:** `{ data: { run_id, scenario_id, baseline_series: [], scenario_series: [], difference_at_horizon, explanation, assumptions, model_card } }`
+
+### GET /api/v1/scenarios/runs
+- **Auth:** Bearer required.
+- **Response:** `{ data: { id, title, created_at }[] }`
+
+### GET /api/v1/scenarios/runs/:id
+- **Auth:** Bearer required.
+- **Response:** `{ data: { id, title, description, parameters, results } }`
+
+### POST /api/v1/scenarios/compare
+- **Auth:** Bearer required.
+- **Body:** `{ run_ids: [uuid, uuid] }`
+- **Response:** `{ data: { id, title, parameters, results }[] }`
+
+---
+
 ## Health
 
 ### GET /api/v1/health

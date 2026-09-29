@@ -12,7 +12,7 @@
 - [x] B8: Metadata extraction and recommendations
 - [x] B9: Core API - GIS Spatial Endpoints
 - [x] B10: Core API & AI Service - Analytics API
-- [ ] B11: AI Service - Scenario Sandbox modeling & endpoints
+- [x] B11: AI Service - Scenario Sandbox modeling & endpoints
 - [ ] B12: Core API - Dashboards & Aggregations
 - [ ] B13: Core API - Evidence Graph Connections
 - [ ] B14: Core API - Innovation Portal (Admin/CRUD)

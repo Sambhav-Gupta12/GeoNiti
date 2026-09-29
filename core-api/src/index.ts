@@ -20,6 +20,7 @@ import recommendationsRoutes from './modules/recommendations/routes';
 import regionsRoutes from './modules/regions/routes';
 import layersRoutes from './modules/layers/routes';
 import analyticsRoutes from './modules/analytics/routes';
+import scenariosRoutes from './modules/scenarios/routes';
 
 const logger = pino();
 const app = express();
@@ -49,6 +50,7 @@ app.use('/api/v1/recommendations', recommendationsRoutes);
 app.use('/api/v1/regions', regionsRoutes);
 app.use('/api/v1/layers', layersRoutes);
 app.use('/api/v1/analytics', analyticsRoutes);
+app.use('/api/v1/scenarios', scenariosRoutes);
 
 // Health check with live DB ping
 app.get('/api/v1/health', async (_req, res) => {
