@@ -294,6 +294,90 @@
 
 ---
 
+## Workspace — `/api/v1/projects`
+
+### GET /api/v1/projects
+- **Auth:** Bearer required.
+- **Response:** `{ data: { id, name, description, owner_id, is_public, role }[] }`
+
+### POST /api/v1/projects
+- **Auth:** Bearer required.
+- **Body:** `{ name, description, is_public }`
+- **Response:** `{ data: Project }`
+
+### GET /api/v1/projects/:id
+- **Auth:** Bearer required.
+- **Response:** `{ data: { ...Project, items: ProjectItem[], members: ProjectMember[] } }`
+
+### PATCH /api/v1/projects/:id
+- **Auth:** Bearer + `editor` role or `owner`
+- **Body:** `{ name, description, is_public }`
+- **Response:** `{ data: Project }`
+
+### DELETE /api/v1/projects/:id
+- **Auth:** Bearer + `owner`
+- **Response:** `{ data: { success } }`
+
+### POST /api/v1/projects/:id/items
+- **Auth:** Bearer + `editor` role or `owner`
+- **Body:** `{ item_type: "document|dataset|region|search|analysis|scenario_run|map_view|chat_answer|note", item_id?: uuid, payload?: any, note?: string }`
+- **Response:** `{ data: ProjectItem }`
+
+### DELETE /api/v1/projects/:id/items/:itemId
+- **Auth:** Bearer + `editor` role or `owner`
+- **Response:** `{ data: { success } }`
+
+### GET /api/v1/projects/:id/export?format=md
+- **Auth:** Bearer required.
+- **Response:** Markdown text summarizing the project items.
+
+---
+
+## Annotations — `/api/v1/annotations`
+
+### POST /api/v1/annotations
+- **Auth:** Bearer required.
+- **Body:** `{ entity_type, entity_id, content }`
+- **Response:** `{ data: Annotation }`
+
+### GET /api/v1/annotations
+- **Auth:** Bearer required.
+- **Query:** `?entity_type=...&entity_id=...`
+- **Response:** `{ data: Annotation[] }`
+
+---
+
+## Evidence Graph — `/api/v1/graph`
+
+### GET /api/v1/graph
+- **Auth:** Bearer required.
+- **Query:** `?center_type=...&center_id=...&depth=1`
+- **Response:** `{ data: { nodes: {id, type, label}[], edges: {source, target, relation}[] } }`
+
+### POST /api/v1/graph/evidence-links
+- **Auth:** Bearer + `document:create`
+- **Body:** `{ source_type, source_id, target_type, target_id, relation }`
+- **Response:** `{ data: EvidenceLink }`
+
+### DELETE /api/v1/graph/evidence-links/:id
+- **Auth:** Bearer + `document:create`
+- **Response:** `{ data: { success } }`
+
+---
+
+## Notifications — `/api/v1/notifications`
+
+### GET /api/v1/notifications
+- **Auth:** Bearer required.
+- **Response:** `{ data: Notification[] }`
+
+### PATCH /api/v1/notifications/:id
+- **Auth:** Bearer required.
+- **Body:** `{ is_read: boolean }`
+- **Response:** `{ data: Notification }`
+
+---
+
 ## Health
 
 ### GET /api/v1/health
