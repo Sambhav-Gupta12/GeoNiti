@@ -24,7 +24,7 @@
 - [x] F3: Semantic Search & AI Research Assistant (RAG Chat)
 - [x] F4: GIS Map Interface (MapLibre)
 - [x] F5: Dataset Explorer UI
-- [ ] F6: Workspace & Projects UI
+- [x] F6: Workspace & Projects UI
 - [ ] F7: Policy Analytics & Trend Charts
 - [ ] F8: Scenario Sandbox Interface
 - [ ] F9: Dashboards (Role-specific views)

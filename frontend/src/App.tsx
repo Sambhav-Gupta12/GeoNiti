@@ -14,6 +14,7 @@ const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const Repository = lazy(() => import('@/pages/Repository'));
 const DocumentDetail = lazy(() => import('@/pages/DocumentDetail'));
 const Search = lazy(() => import('@/pages/Search'));
+const Assistant = lazy(() => import('@/pages/Assistant'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -51,7 +52,7 @@ export default function App() {
                 <Route path="repository/:id" element={<ProtectedRoute><DocumentDetail /></ProtectedRoute>} />
                 <Route path="datasets" element={<ProtectedRoute><Placeholder title="Datasets" description="Explore underlying tabular and vector datasets." /></ProtectedRoute>} />
                 <Route path="datasets/:id" element={<ProtectedRoute><Placeholder title="Dataset Details" /></ProtectedRoute>} />
-                <Route path="assistant" element={<ProtectedRoute><Placeholder title="AI Assistant" description="Chat with the evidence base." /></ProtectedRoute>} />
+                <Route path="assistant" element={<ProtectedRoute><Assistant /></ProtectedRoute>} />
                 <Route path="map" element={<ProtectedRoute><Placeholder title="Map Explorer" description="Interactive GIS layers." /></ProtectedRoute>} />
                 <Route path="regions/:id" element={<ProtectedRoute><Placeholder title="Region Profile" /></ProtectedRoute>} />
                 <Route path="analytics" element={<ProtectedRoute><Placeholder title="Analytics" description="Indicator trends and comparisons." /></ProtectedRoute>} />
