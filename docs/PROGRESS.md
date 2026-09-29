@@ -32,8 +32,8 @@
 - [x] F11: Admin & Approvals UI
 - [x] F12: Innovation Portal Views
 - [x] F13: PDF Upload & Metadata Review
-- [ ] F14: Empty, Error, and Loading States Polish
-- [ ] F15: Final integration and bug fixes
+- [x] F14: Empty, Error, and Loading States Polish
+- [x] F15: Final integration and bug fixes
 - [ ] F16: Demo preparation & seed data verification
 
 ---
