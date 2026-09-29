@@ -21,6 +21,8 @@ const Datasets = lazy(() => import('@/pages/Datasets'));
 const DatasetDetail = lazy(() => import('@/pages/DatasetDetail'));
 const Analytics = lazy(() => import('@/pages/Analytics'));
 const Scenarios = lazy(() => import('@/pages/Scenarios'));
+const Workspace = lazy(() => import('@/pages/Workspace'));
+const ProjectDetail = lazy(() => import('@/pages/ProjectDetail'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -63,8 +65,8 @@ export default function App() {
                 <Route path="regions/:id" element={<ProtectedRoute><RegionProfile /></ProtectedRoute>} />
                 <Route path="analytics" element={<ProtectedRoute><Analytics /></ProtectedRoute>} />
                 <Route path="scenarios" element={<ProtectedRoute permission="scenario:run"><Scenarios /></ProtectedRoute>} />
-                <Route path="workspace" element={<ProtectedRoute><Placeholder title="Workspaces" description="Manage your projects." /></ProtectedRoute>} />
-                <Route path="workspace/:id" element={<ProtectedRoute><Placeholder title="Project Workspace" /></ProtectedRoute>} />
+                <Route path="workspace" element={<ProtectedRoute><Workspace /></ProtectedRoute>} />
+                <Route path="workspace/:id" element={<ProtectedRoute><ProjectDetail /></ProtectedRoute>} />
                 
                 <Route path="innovation" element={<ProtectedRoute><Placeholder title="Innovation Portal" description="Discover and register for challenges." /></ProtectedRoute>} />
                 

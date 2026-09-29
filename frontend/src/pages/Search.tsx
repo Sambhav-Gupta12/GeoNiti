@@ -12,7 +12,8 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { ErrorState } from '@/components/ui/ErrorState';
 import { Tooltip } from '@/components/ui/Tooltip';
-import { Search as SearchIcon, Info, Sparkles, Bookmark, Plus, FileText, ChevronRight } from 'lucide-react';
+import { AddToProjectDialog } from '@/components/ui/AddToProjectDialog';
+import { Search as SearchIcon, Info, Sparkles, Bookmark, Plus, FileText, ChevronRight, X } from 'lucide-react';
 import { useAuth } from '@/lib/auth';
 
 export default function Search() {
@@ -26,6 +27,7 @@ export default function Search() {
   
   const [localQuery, setLocalQuery] = useState(q);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [saveDialog, setSaveDialog] = useState<{isOpen: boolean, type: any, payload: any}>({ isOpen: false, type: 'search', payload: {} });
 
   // Sync local query when URL changes
   useEffect(() => { setLocalQuery(q); }, [q]);
@@ -194,8 +196,8 @@ export default function Search() {
                 </Button>
                 {user && (
                   <>
-                    <Button size="sm" variant="outline"><Bookmark className="w-4 h-4 mr-2" /> Save search</Button>
-                    <Button size="sm" variant="outline"><Plus className="w-4 h-4 mr-2" /> Add to project</Button>
+                    <Button size="sm" variant="outline" onClick={() => setSaveDialog({isOpen: true, type: 'search', payload: { q, mode, type }})}><Bookmark className="w-4 h-4 mr-2" /> Save search</Button>
+                    <Button size="sm" variant="outline" onClick={() => setSaveDialog({isOpen: true, type: 'search', payload: { q, mode, type }})}><Plus className="w-4 h-4 mr-2" /> Add to project</Button>
                   </>
                 )}
               </div>
@@ -231,6 +233,7 @@ export default function Search() {
           )}
         </div>
       </div>
+      <AddToProjectDialog isOpen={saveDialog.isOpen} onClose={() => setSaveDialog(prev => ({...prev, isOpen: false}))} itemType={saveDialog.type} payload={saveDialog.payload} />
     </div>
   );
 }

@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/Button';
 import { Banner } from '@/components/ui/Banner';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { ErrorState } from '@/components/ui/ErrorState';
+import { AddToProjectDialog } from '@/components/ui/AddToProjectDialog';
 import { ArrowLeft, Sparkles, MessageSquare, Download, Share2, Bookmark, Quote } from 'lucide-react';
 import { useAuth } from '@/lib/auth';
 
@@ -18,6 +19,7 @@ export default function DocumentDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { can } = useAuth();
+  const [saveDialog, setSaveDialog] = useState(false);
 
   const { data: doc, isLoading, error } = useQuery({
     queryKey: ['document', id],
@@ -159,7 +161,7 @@ export default function DocumentDetail() {
               <CardTitle className="text-sm">Actions</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <Button variant="ghost" className="w-full justify-start text-neutral-600"><Bookmark className="w-4 h-4 mr-3" /> Save to Workspace</Button>
+              <Button variant="ghost" className="w-full justify-start text-neutral-600" onClick={() => setSaveDialog(true)}><Bookmark className="w-4 h-4 mr-3" /> Save to Workspace</Button>
               <Button variant="ghost" className="w-full justify-start text-neutral-600"><Share2 className="w-4 h-4 mr-3" /> Share Link</Button>
               <Button variant="ghost" className="w-full justify-start text-neutral-600"><Quote className="w-4 h-4 mr-3" /> Cite Document</Button>
               <Button variant="ghost" className="w-full justify-start text-neutral-600" disabled={doc.visibility === 'restricted'}><Download className="w-4 h-4 mr-3" /> Download Source</Button>
@@ -176,6 +178,7 @@ export default function DocumentDetail() {
           </Card>
         </div>
       </div>
+      <AddToProjectDialog isOpen={saveDialog} onClose={() => setSaveDialog(false)} itemType="document" payload={{ id }} />
     </div>
   );
 }

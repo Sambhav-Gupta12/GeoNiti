@@ -10,6 +10,7 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { Drawer } from '@/components/ui/Drawer';
 import { Select } from '@/components/ui/Select';
 import { Tooltip } from '@/components/ui/Tooltip';
+import { AddToProjectDialog } from '@/components/ui/AddToProjectDialog';
 import { 
   ComposedChart, Area, Line, XAxis, YAxis, CartesianGrid, 
   Tooltip as RechartsTooltip, ResponsiveContainer, ReferenceLine, BarChart, Bar 
@@ -58,6 +59,7 @@ export default function Scenarios() {
   );
 
   const [historyDrawer, setHistoryDrawer] = useState(false);
+  const [saveDialog, setSaveDialog] = useState(false);
 
   const runScenario = async () => {
     setStep(3);
@@ -268,7 +270,7 @@ export default function Scenarios() {
               <Button variant="outline" size="sm" onClick={() => setStep(2)}><Settings2 className="w-4 h-4 mr-2" /> Tweak</Button>
               <Button variant="outline" size="sm"><GitCompare className="w-4 h-4 mr-2" /> Compare</Button>
               <Button variant="outline" size="sm" onClick={handleExport}><Download className="w-4 h-4 mr-2" /> Export</Button>
-              <Button variant="primary" size="sm" className="bg-emerald-600 border-none"><Save className="w-4 h-4 mr-2" /> Save to Project</Button>
+              <Button variant="primary" size="sm" className="bg-emerald-600 border-none" onClick={() => setSaveDialog(true)}><Save className="w-4 h-4 mr-2" /> Save to Project</Button>
             </div>
           </div>
 
@@ -410,6 +412,7 @@ export default function Scenarios() {
         </div>
       </Drawer>
 
+      <AddToProjectDialog isOpen={saveDialog} onClose={() => setSaveDialog(false)} itemType="scenario_run" payload={{ region, indicator, horizon, params }} />
     </div>
   );
 }

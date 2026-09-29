@@ -30,7 +30,7 @@
 - [x] F9: Dashboards (Role-specific views)
 - [x] F10: Evidence Graph View
 - [ ] F11: Admin & Approvals UI
-- [ ] F12: Innovation Portal Views
+- [x] F12: Innovation Portal Views
 - [ ] F13: PDF Upload & Metadata Review
 - [ ] F14: Empty, Error, and Loading States Polish
 - [ ] F15: Final integration and bug fixes

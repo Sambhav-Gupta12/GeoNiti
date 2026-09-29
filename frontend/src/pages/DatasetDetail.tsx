@@ -8,6 +8,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Banner } from '@/components/ui/Banner';
 import { Skeleton } from '@/components/ui/Skeleton';
+import { AddToProjectDialog } from '@/components/ui/AddToProjectDialog';
 import { ArrowLeft, MapIcon, BarChart3, Download, Plus, Lock, CheckCircle2, ShieldAlert, GitCommit } from 'lucide-react';
 import { useAuth } from '@/lib/auth';
 
@@ -15,6 +16,7 @@ export default function DatasetDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { can } = useAuth();
+  const [saveDialog, setSaveDialog] = useState(false);
 
   const { data: ds, isLoading } = useQuery({
     queryKey: ['dataset', id],
@@ -196,7 +198,7 @@ export default function DatasetDetail() {
               <Button variant="primary" className="w-full justify-start"><Download className="w-4 h-4 mr-3" /> Download CSV</Button>
               <Button variant="outline" className="w-full justify-start text-neutral-700" onClick={() => navigate('/map')}><MapIcon className="w-4 h-4 mr-3" /> Open in Map</Button>
               <Button variant="outline" className="w-full justify-start text-neutral-700" onClick={() => navigate('/analytics')}><BarChart3 className="w-4 h-4 mr-3" /> Open in Analytics</Button>
-              <Button variant="ghost" className="w-full justify-start text-neutral-600"><Plus className="w-4 h-4 mr-3" /> Add to Workspace</Button>
+              <Button variant="ghost" className="w-full justify-start text-neutral-600" onClick={() => setSaveDialog(true)}><Plus className="w-4 h-4 mr-3" /> Add to Workspace</Button>
             </CardContent>
           </Card>
           
@@ -215,6 +217,8 @@ export default function DatasetDetail() {
           </Card>
         </div>
       </div>
+      
+      <AddToProjectDialog isOpen={saveDialog} onClose={() => setSaveDialog(false)} itemType="dataset" payload={{ id }} />
     </div>
   );
 }

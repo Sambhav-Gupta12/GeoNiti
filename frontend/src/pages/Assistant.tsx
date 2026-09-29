@@ -11,6 +11,7 @@ import { Tooltip } from '@/components/ui/Tooltip';
 import { Banner } from '@/components/ui/Banner';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { useToast } from '@/components/ui/Toast';
+import { AddToProjectDialog } from '@/components/ui/AddToProjectDialog';
 import { 
   Send, Plus, MessageSquare, Search, FileText, 
   Copy, Bookmark, Flag, ExternalLink, X, Settings2
@@ -48,6 +49,7 @@ export default function Assistant() {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingStage, setLoadingStage] = useState<'retrieving' | 'drafting' | null>(null);
   const [activeSources, setActiveSources] = useState<Source[]>([]);
+  const [saveDialog, setSaveDialog] = useState<{isOpen: boolean, payload: any}>({ isOpen: false, payload: null });
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -269,7 +271,7 @@ export default function Assistant() {
                         
                         <div className="flex items-center space-x-1 mt-2 text-neutral-400">
                           <IconButton icon={Copy} size="sm" variant="ghost" onClick={() => addToast({ type: 'success', title: 'Copied to clipboard' })} />
-                          <IconButton icon={Bookmark} size="sm" variant="ghost" onClick={() => addToast({ type: 'success', title: 'Saved to workspace' })} />
+                          <IconButton icon={Bookmark} size="sm" variant="ghost" onClick={() => setSaveDialog({isOpen: true, payload: { text: msg.content }})} />
                           <IconButton icon={Flag} size="sm" variant="ghost" onClick={() => addToast({ type: 'info', title: 'Feedback recorded' })} />
                         </div>
                       </div>
@@ -370,7 +372,6 @@ export default function Assistant() {
                     <Button variant="outline" size="sm" className="flex-1 text-xs h-8" onClick={() => navigate(`/repository/${src.id}`)}>
                       <ExternalLink className="w-3 h-3 mr-1" /> View doc
                     </Button>
-                    <IconButton icon={Plus} size="sm" variant="outline" className="w-8 h-8 p-0" aria-label="Add to project" />
                   </div>
                 </CardContent>
               </Card>
@@ -379,6 +380,7 @@ export default function Assistant() {
         </div>
       </div>
 
+      <AddToProjectDialog isOpen={saveDialog.isOpen} onClose={() => setSaveDialog(prev => ({...prev, isOpen: false}))} itemType="chat_answer" payload={saveDialog.payload} />
     </div>
   );
 }

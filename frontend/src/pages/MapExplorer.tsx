@@ -13,6 +13,7 @@ import { IconButton } from '@/components/ui/IconButton';
 import { Input } from '@/components/ui/Input';
 import { LineTrend } from '@/components/charts/LineTrend';
 import { Tooltip } from '@/components/ui/Tooltip';
+import { AddToProjectDialog } from '@/components/ui/AddToProjectDialog';
 import { MapIcon, Search, Download, Bookmark, Play, Pause, RefreshCcw, Layers, Info, ExternalLink, FileText, Database, Sparkles } from 'lucide-react';
 import { useToast } from '@/components/ui/Toast';
 import { useAuth } from '@/lib/auth';
@@ -56,6 +57,7 @@ export default function MapExplorer() {
   const [opacity, setOpacity] = useState(0.8);
   const [isPlaying, setIsPlaying] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [saveDialog, setSaveDialog] = useState(false);
   
   const updateParams = (updates: Record<string, string | null>) => {
     const next = new URLSearchParams(searchParams);
@@ -337,7 +339,7 @@ export default function MapExplorer() {
 
         <div className="absolute top-4 right-4 flex gap-2 z-10">
           <Button variant="secondary" size="sm" onClick={handleExport} className="bg-white shadow-sm"><Download className="w-4 h-4 mr-2" /> Export</Button>
-          {user && <Button variant="secondary" size="sm" onClick={() => addToast({ type: 'success', title: 'Map view saved to workspace' })} className="bg-white shadow-sm"><Bookmark className="w-4 h-4 mr-2" /> Save View</Button>}
+          {user && <Button variant="secondary" size="sm" onClick={() => setSaveDialog(true)} className="bg-white shadow-sm"><Bookmark className="w-4 h-4 mr-2" /> Save View</Button>}
         </div>
 
         {/* Legend Overlay */}
@@ -458,7 +460,8 @@ export default function MapExplorer() {
           <EmptyState title="No data found" description="Profile unavailable." />
         )}
       </Drawer>
-
+      
+      <AddToProjectDialog isOpen={saveDialog} onClose={() => setSaveDialog(false)} itemType="map_view" payload={{ layer, year, region }} />
     </div>
   );
 }

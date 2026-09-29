@@ -13,6 +13,7 @@ import { ErrorState } from '@/components/ui/ErrorState';
 import { LineTrend } from '@/components/charts/LineTrend';
 import { Tooltip } from '@/components/ui/Tooltip';
 import { Select } from '@/components/ui/Select';
+import { AddToProjectDialog } from '@/components/ui/AddToProjectDialog';
 import { BarChart3, TrendingUp, Search, Download, Bookmark, Sparkles, AlertCircle, Info, ScatterChart as ScatterIcon, Layers, Settings2 } from 'lucide-react';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, ZAxis } from 'recharts';
 import { useToast } from '@/components/ui/Toast';
@@ -52,6 +53,7 @@ export default function Analytics() {
 
   const [corrX, setCorrX] = useState('built_up');
   const [corrY, setCorrY] = useState('disputes');
+  const [saveDialog, setSaveDialog] = useState(false);
 
   const updateParams = (updates: Record<string, string | null>) => {
     const next = new URLSearchParams(searchParams);
@@ -160,7 +162,7 @@ export default function Analytics() {
         <PageHeader title="Analytics Workspace" description="Multi-indicator trends, comparisons, and anomaly detection." />
         <div className="flex gap-2">
           <Button variant="outline" size="sm"><Download className="w-4 h-4 mr-2" /> Export CSV</Button>
-          {user && <Button variant="secondary" size="sm"><Bookmark className="w-4 h-4 mr-2" /> Save to Project</Button>}
+          {user && <Button variant="secondary" size="sm" onClick={() => setSaveDialog(true)}><Bookmark className="w-4 h-4 mr-2" /> Save to Project</Button>}
         </div>
       </div>
 
@@ -402,6 +404,7 @@ export default function Analytics() {
         </div>
       </div>
 
+      <AddToProjectDialog isOpen={saveDialog} onClose={() => setSaveDialog(false)} itemType="analysis" payload={{ indicator, regions: regionsStr, startYear, endYear, chartType }} />
     </div>
   );
 }
