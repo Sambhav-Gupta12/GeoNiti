@@ -34,7 +34,7 @@
 - [x] F13: PDF Upload & Metadata Review
 - [x] F14: Empty, Error, and Loading States Polish
 - [x] F15: Final integration and bug fixes
-- [ ] F16: Demo preparation & seed data verification
+- [x] F16: Demo preparation & seed data verification
 
 ---
 
