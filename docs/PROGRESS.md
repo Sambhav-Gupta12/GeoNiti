@@ -21,7 +21,7 @@
 - [x] F0: Frontend setup, Design System & COMPONENTS.md
 - [x] F1: Authentication & Layout Shell
 - [x] F2: Document Repository UI
-- [ ] F3: Semantic Search & AI Research Assistant (RAG Chat)
+- [x] F3: Semantic Search & AI Research Assistant (RAG Chat)
 - [ ] F4: GIS Map Interface (MapLibre)
 - [ ] F5: Dataset Explorer UI
 - [ ] F6: Workspace & Projects UI

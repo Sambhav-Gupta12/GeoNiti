@@ -10,6 +10,7 @@ import { PageHeader } from '@/components/ui/PageHeader';
 
 const Login = lazy(() => import('@/pages/Login'));
 const Placeholder = lazy(() => import('@/pages/Placeholder'));
+const Dashboard = lazy(() => import('@/pages/Dashboard'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -41,7 +42,7 @@ export default function App() {
               <Route path="/login" element={<Login />} />
               
               <Route path="/" element={<AppShell />}>
-                <Route index element={<ProtectedRoute><Placeholder title="Dashboard" description="Overview of insights and metrics." /></ProtectedRoute>} />
+                <Route index element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="search" element={<ProtectedRoute><Placeholder title="AI Search" description="Semantic search across all documents." /></ProtectedRoute>} />
                 <Route path="repository" element={<ProtectedRoute><Placeholder title="Document Repository" description="Browse and manage all uploaded reports." /></ProtectedRoute>} />
                 <Route path="repository/:id" element={<ProtectedRoute><Placeholder title="Document Details" /></ProtectedRoute>} />
